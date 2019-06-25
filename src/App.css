@@ -8,3 +8,24 @@
   justify-content: center;
   align-items: center;
 }
+
+/** Main nav styles **/
+.kr--main-nav .ant-menu-item {
+  padding: 0;
+}
+
+.kr--main-nav .ant-menu-item a {
+  padding: 0 20px;
+}
+
+.kr--main-nav .ant-menu-item a.active {
+  background: #ffffff;
+  color: #000000;
+}
+
+.kr--full-width-height-banner {
+  height: 100vh;
+}
+
+.kr--banner-content-container {
+}
