@@ -1,18 +1,15 @@
 import React, { PureComponent, Fragment } from 'react';
-import { Card, Row, Col, Layout } from 'antd';
+import { Card, Row, Col, Layout, Icon, Typography } from 'antd';
 import PageBanner from './../../components/Elements/PageBanner';
+import { purple } from '@ant-design/colors';
 
+const { Title } = Typography;
 const { Content } = Layout;
 
 export default class Home extends PureComponent {
   state = {
     height: ''
   };
-  // headerContentMargin = height => {
-  //   document.querySelector('.kr--full-width-height-banner').style.marginTop =
-  //     -height + 'px';
-  //   console.log(height);
-  // };
 
   componentDidMount() {
     let headerHeight = document.querySelector('.ant-layout-header')
@@ -21,8 +18,6 @@ export default class Home extends PureComponent {
     this.setState({
       height: headerHeight
     });
-
-    console.log(this.state.height);
   }
 
   render() {
@@ -36,17 +31,27 @@ export default class Home extends PureComponent {
           buttontype="primary"
           buttontext="Hey"
           icontype="right"
-          imgsrc="https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105_1280.png"
+          bgcolor={purple.primary}
+          imgsrc={require('../../assets/svg/wiggleSvg.svg')}
           minusmarginTop={this.state.height}
           isVis={false}
         />
 
-        <Row type="flex" justify="center" align="center">
+        <Row type="flex" justify="center">
           <Col span={12}>
             <Content style={{ padding: '50px' }}>
-              <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-                Content
-              </div>
+              <Card
+                title="Introduction"
+                extra={<Icon type="smile" />}
+                style={{ background: '#ffffff' }}
+              >
+                <Title level={2}>Hello. Welcome.</Title>
+                <p>
+                  Well done on finding the website for me,{' '}
+                  <strong>Kurtis Karl Rogers</strong>.
+                </p>
+                <Title level={3}>Currently working for Bigg</Title>
+              </Card>
             </Content>
           </Col>
           <Col span={12}>

@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Img, PureComponent } from 'react';
 import { Layout, Divider, Button, Row, Col, Typography, Icon } from 'antd';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -19,6 +19,7 @@ export default class PageBanner extends PureComponent {
       buttontype,
       buttontext,
       imgsrc,
+      bgcolor,
       icontype,
       minusmarginTop,
       isVis
@@ -27,8 +28,8 @@ export default class PageBanner extends PureComponent {
     return (
       <div
         style={{
-          background: `url(${imgsrc})`,
-          backgroundSize: 'cover',
+          backgroundColor: bgcolor,
+          backgroundImage: `url(${imgsrc})`,
           backgroundPosition: 'center',
           display: 'flex',
           justifyContent: 'center',
@@ -53,7 +54,7 @@ export default class PageBanner extends PureComponent {
                   </Title>
                   {isVis ? <Divider type="horizontal" /> : null}
                   <p style={{ color: bannercontentcolor }}>{bannercontent}</p>
-                  <Link className={`ant-btn btn-${buttontype}`} to={link}>
+                  <Link className={`ant-btn ant-btn-${buttontype}`} to={link}>
                     {buttontext} <Icon type={icontype} />
                   </Link>
                 </div>
