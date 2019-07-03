@@ -34,7 +34,7 @@ export default class Home extends PureComponent {
           bannercontent="Welcome to my website. I have been spending the last year focusing on developing my skills in advanced JavaScript application development. Having a deep knowledge of ES5 and a decent workable knwoledge of ESnext, I can build tomorrows applications."
           link="/about"
           buttontype="primary"
-          buttontext="Hey"
+          buttontext="Learn more"
           icontype="right"
           imgsrc="https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105_1280.png"
           minusmarginTop={this.state.height}

@@ -53,7 +53,7 @@ export default class PageBanner extends PureComponent {
                   </Title>
                   {isVis ? <Divider type="horizontal" /> : null}
                   <p style={{ color: bannercontentcolor }}>{bannercontent}</p>
-                  <Link className={`ant-btn btn-${buttontype}`} to={link}>
+                  <Link className={`ant-btn ant-btn-${buttontype}`} to={link}>
                     {buttontext} <Icon type={icontype} />
                   </Link>
                 </div>
