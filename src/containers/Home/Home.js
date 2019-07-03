@@ -3,7 +3,7 @@ import { Card, Row, Col, Layout, Icon, Typography } from 'antd';
 import PageBanner from './../../components/Elements/PageBanner';
 import { purple } from '@ant-design/colors';
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 const { Content } = Layout;
 
 export default class Home extends PureComponent {
@@ -46,10 +46,10 @@ export default class Home extends PureComponent {
                 style={{ background: '#ffffff' }}
               >
                 <Title level={2}>Hello. Welcome.</Title>
-                <p>
-                  Well done on finding the website for me,{' '}
+                <Text code>
+                  Well done on finding the website for me,&nbsp;
                   <strong>Kurtis Karl Rogers</strong>.
-                </p>
+                </Text>
                 <Title level={3}>Currently working for Bigg</Title>
               </Card>
             </Content>
