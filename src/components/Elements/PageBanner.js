@@ -22,6 +22,7 @@ export default class PageBanner extends PureComponent {
       bgcolor,
       icontype,
       minusmarginTop,
+      svg,
       isVis
     } = this.props;
 
@@ -41,7 +42,7 @@ export default class PageBanner extends PureComponent {
         <Layout className="layout" style={{ background: 'none' }}>
           <Content style={{ padding: '0 50px' }}>
             <Row type="flex">
-              <Col span={12}>
+              <Col style={{ display: 'flex', alignItems: 'center' }} span={12}>
                 <div className="kr--banner-content-container">
                   <Title style={{ marginBottom: '0', color: titlecolor }}>
                     {title}
@@ -59,6 +60,13 @@ export default class PageBanner extends PureComponent {
                   </Link>
                 </div>
               </Col>
+              <Col
+                className="kkr--svg-container"
+                style={{ padding: '0 50px' }}
+                span={12}
+              >
+                <object type="image/svg+xml" data={svg} />
+              </Col>
             </Row>
           </Content>
         </Layout>
@@ -75,7 +83,8 @@ PageBanner.propTypes = {
   link: PropTypes.string.isRequired,
   buttontype: PropTypes.string.isRequired,
   icontype: PropTypes.string.isRequired,
-  imgsrc: PropTypes.string.isRequired
+  imgsrc: PropTypes.string.isRequired,
+  svg: PropTypes.string.isRequired
 };
 
 PageBanner.defaultProps = {
