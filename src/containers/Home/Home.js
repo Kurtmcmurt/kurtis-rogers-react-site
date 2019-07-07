@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
-import { Card, Row, Col, Layout, Icon, Typography } from 'antd';
+import { Card, Row, Col, Layout, Icon, Typography, Divider, Tag } from 'antd';
 import PageBanner from './../../components/Elements/PageBanner';
 import { purple, magenta, blue, geekblue } from '@ant-design/colors';
 
@@ -28,53 +28,64 @@ export default class Home extends PureComponent {
           subtitle='"The world&apos;s second most popular React UI framework"'
           bannercontent="Welcome to my website. I have been spending the last year focusing on developing my skills in advanced JavaScript application development. Having a deep knowledge of ES5 and a decent workable knwoledge of ESnext, I can build tomorrows applications."
           link="/about"
-          buttontype="default"
+          buttontype="primary"
           buttontext="Learn more"
           icontype="right"
           bgcolor={geekblue.primary}
           imgsrc={require('../../assets/svg/wiggleSvg.svg')}
           minusmarginTop={this.state.height}
+          // maintain vertical alignment of all content
+          paddingtopcontent={this.state.height}
           isVis={false}
           svg={require('./../../assets/svg/undraw_code_review.svg')}
         />
-
-        <Row type="flex" justify="center">
-          <Col span={12}>
-            <Content style={{ padding: '50px' }}>
-              <Card
-                headStyle={{
-                  backgroundColor: purple.primary,
-                  color: '#ffffff'
-                }}
-                title="Introduction"
-                extra={<Icon style={{ color: '#ffffff' }} type="smile" />}
-                style={{ background: '#ffffff' }}
-              >
-                <Title level={2}>Hello and welcome.</Title>
-                <Text code>
-                  Well done on finding the website for me,&nbsp;
-                  <strong>Kurtis Karl Rogers</strong>.
-                </Text>
-                <Title level={3}>Currently working for Bigg</Title>
-              </Card>
-            </Content>
-          </Col>
-          <Col span={12}>
-            <div
-              style={{
-                position: 'absolute',
-                left: '0',
-                right: '0',
-                bottom: '0',
-                top: '0',
-                width: '100%',
-                height: '100%',
-                background:
-                  'url(https://cdn.pixabay.com/photo/2017/02/01/22/02/mountain-landscape-2031539_1280.jpg)'
-              }}
-            />
-          </Col>
-        </Row>
+        <div
+          style={{
+            background:
+              'url(https://cdn.pixabay.com/photo/2017/02/01/22/02/mountain-landscape-2031539_1280.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        >
+          <Row type="flex" justify="center" style={{ alignItems: 'center' }}>
+            <Col span={12}>
+              <Content style={{ padding: '50px' }}>
+                <Card
+                  headStyle={{
+                    backgroundColor: purple.primary,
+                    color: '#ffffff'
+                  }}
+                  title={['Introduction ']}
+                  extra={<Icon style={{ color: '#ffffff' }} type="smile" />}
+                  style={{ background: '#ffffff' }}
+                >
+                  <Title level={2}>Hello and welcome.</Title>
+                  <Typography.Paragraph>
+                    I'm a software developer for{' '}
+                    <span style={{ fontWeight: 'bold', color: '#44A4EE' }}>
+                      Bigg
+                    </span>
+                    , a <strong>leading white label marketing agency</strong>{' '}
+                    based in the Southville area of Bristol. involved in a
+                    variety of projects which rely on a plethora of technologies
+                    ranging from JavaScript to PHP. <Divider />
+                    Part of a strong team comprised of technologists, movie and
+                    game nerds. And it&apos;s delicious.
+                  </Typography.Paragraph>
+                </Card>
+              </Content>
+            </Col>
+            <Col span={12}>
+              <Title level={4} style={{ color: '#ffffff' }}>
+                &quot;I tend to choose picturesque, depth-yielding landscape
+                images for backgrounds on everything because I find nature
+                calming. An active member of The National Trust, I'll often be
+                found in some shrub trying to communicate with a disgruntled
+                Goose.&quot;
+              </Title>
+            </Col>
+          </Row>
+        </div>
       </Fragment>
     );
   }

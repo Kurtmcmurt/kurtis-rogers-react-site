@@ -27,7 +27,7 @@ class App extends PureComponent {
               <HeaderContent />
             </Header>
             <MainContent />
-            <Footer style={{ textAlign: 'center' }}>
+            <Footer style={{ backgroundColor: '#001529' }}>
               <FooterContent />
             </Footer>
           </Layout>
