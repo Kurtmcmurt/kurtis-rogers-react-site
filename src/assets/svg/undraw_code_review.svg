@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="a594ac37-6d44-4297-8862-1cbd9c01c0b7" width="100%" height="100%" data-name="Layer 1" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1126.19355 855">
+    <style>
+        @keyframes changeOpacity { from { opacity: 0; } to { opacity: 1 } } .line { animation-duration: 0.4s; animation-name: changeOpacity; animation-iteration-count: infinite; animation-direction: alternate; } #line1 { -webkit-animation-delay: .1s; animation-delay: .1s; } #line2 { -webkit-animation-delay: .2s; animation-delay: .2s; } #line3 { -webkit-animation-delay: .3s; animation-delay: .3s; } #line4 { -webkit-animation-delay: .4s; animation-delay: .4s; } #line5 { -webkit-animation-delay: .5s; animation-delay: .5s; } #line6 { -webkit-animation-delay: .6s; animation-delay: .6s; } #line7 { -webkit-animation-delay: .7s; animation-delay: .7s; } #line8 { -webkit-animation-delay: .8s; animation-delay: .8s; } #line9 { -webkit-animation-delay: .9s; animation-delay: .9s; } #line10 { -webkit-animation-delay: 1s; animation-delay: 1s; } #line11 { -webkit-animation-delay: 1.1s; animation-delay: 1.1s; } #line12 { -webkit-animation-delay: 1.2s; animation-delay: 1.2s; } #line13 { -webkit-animation-delay: 1.3s; animation-delay: 1.3s; } #line14 { -webkit-animation-delay: 1.4s; animation-delay: 1.4s; } #line15 { -webkit-animation-delay: 1.5s; animation-delay: 1.5s; } #line16 { -webkit-animation-delay: 1.6s; animation-delay: 1.6s; } #line17 { -webkit-animation-delay: 1.7s; animation-delay: 1.7s; } #line18 { -webkit-animation-delay: 1.8s; animation-delay: 1.8s; } #line19 { -webkit-animation-delay: 1.9s; animation-delay: 1.9s; } #line20 { -webkit-animation-delay: 2s; animation-delay: 2s; }
+    </style>
+    <title>
+        code review
+    </title>
+    <rect id="svgparenthome" width="752" height="590" x="196.19355" y="162" fill="#3f3d56"/>
+    <path id="line1" fill="#f2f2f2" d="M600.54135,265.12914H415.02363a2.25143,2.25143,0,1,1,0-4.50285H600.54135a2.25143,2.25143,0,0,1,0,4.50285Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line2" fill="#f2f2f2" d="M803.6202,289.89486H511.83506a2.25143,2.25143,0,0,1,0-4.50286H803.6202a2.25143,2.25143,0,1,1,0,4.50286Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line3" fill="#f2f2f2" d="M601.44192,314.66057H415.9242a2.25143,2.25143,0,1,1,0-4.50286H601.44192a2.25143,2.25143,0,1,1,0,4.50286Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line3" fill="#f2f2f2" d="M803.6202,315.11086H618.10249a2.25143,2.25143,0,0,1,0-4.50286H803.6202a2.25143,2.25143,0,1,1,0,4.50286Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line4" fill="#f2f2f2" d="M601.8922,339.42629H416.37449a2.25143,2.25143,0,0,1,0-4.50286H601.8922a2.25143,2.25143,0,1,1,0,4.50286Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line5" fill="#f2f2f2" d="M602.34249,364.192H416.82477a2.25143,2.25143,0,0,1,0-4.50286H602.34249a2.25143,2.25143,0,1,1,0,4.50286Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line6" fill="#f2f2f2" d="M686.54592,265.57943H633.4122a2.25143,2.25143,0,0,1,0-4.50286h53.13372a2.25143,2.25143,0,1,1,0,4.50286Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line7" fill="#f2f2f2" d="M686.54592,339.42629H633.4122a2.25143,2.25143,0,0,1,0-4.50286h53.13372a2.25143,2.25143,0,1,1,0,4.50286Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line8" fill="#f2f2f2" d="M686.54592,363.74171H633.4122a2.25143,2.25143,0,1,1,0-4.50285h53.13372a2.25143,2.25143,0,1,1,0,4.50285Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line9" fill="#f2f2f2" d="M775.70249,363.74171H722.56877a2.25143,2.25143,0,0,1,0-4.50285h53.13372a2.25143,2.25143,0,1,1,0,4.50285Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line10" fill="#f2f2f2" d="M467.70706,289.89486H414.57335a2.25143,2.25143,0,0,1,0-4.50286h53.13371a2.25143,2.25143,0,0,1,0,4.50286Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line11" fill="#f2f2f2" d="M600.76649,629.86057H415.24877a2.25143,2.25143,0,0,1,0-4.50286H600.76649a2.25143,2.25143,0,0,1,0,4.50286Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line12" fill="#f2f2f2" d="M599.86592,679.392H414.3482a2.25143,2.25143,0,1,1,0-4.50286H599.86592a2.25143,2.25143,0,0,1,0,4.50286Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line13" fill="#f2f2f2" d="M600.3162,704.15771H414.79849a2.25143,2.25143,0,1,1,0-4.50285H600.3162a2.25143,2.25143,0,1,1,0,4.50285Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line14" fill="#f2f2f2" d="M679.56649,679.84229H626.43277a2.25143,2.25143,0,0,1,0-4.50286h53.13372a2.25143,2.25143,0,0,1,0,4.50286Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line15" fill="#f2f2f2" d="M679.56649,704.15771H626.43277a2.25142,2.25142,0,0,1,0-4.50285h53.13372a2.25142,2.25142,0,1,1,0,4.50285Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line16" fill="#f2f2f2" d="M768.72306,679.84229H715.58935a2.25143,2.25143,0,1,1,0-4.50286h53.13371a2.25143,2.25143,0,0,1,0,4.50286Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line17" fill="#f2f2f2" d="M803.84535,654.62629H512.0602a2.25143,2.25143,0,0,1,0-4.50286H803.84535a2.25143,2.25143,0,0,1,0,4.50286Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line18" fill="#f2f2f2" d="M467.9322,654.62629H414.79849a2.25143,2.25143,0,0,1,0-4.50286H467.9322a2.25143,2.25143,0,0,1,0,4.50286Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line19" fill="#f2f2f2" d="M803.84535,729.37371H512.0602a2.25143,2.25143,0,1,1,0-4.50285H803.84535a2.25142,2.25142,0,0,1,0,4.50285Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <path id="line20" fill="#f2f2f2" d="M467.9322,729.37371H414.79849a2.25143,2.25143,0,1,1,0-4.50285H467.9322a2.25143,2.25143,0,1,1,0,4.50285Z" class="line" transform="translate(-36.90323 -22.5)"/>
+    <polygon id="arrowleft" fill="#6c63ff" points="519.06 401.13 447.014 472.275 519.06 543.42 535.27 527.21 480.786 472.725 535.72 417.79 519.06 401.13"/>
+    <polygon id="arrowright" fill="#6c63ff" points="625.327 401.13 697.373 472.275 625.327 543.42 609.117 527.21 663.602 472.725 608.667 417.79 625.327 401.13"/>
+    <circle cx="216.19355" cy="177" r="9" fill="#6c63ff"/>
+    <circle cx="240.19355" cy="177" r="9" fill="#6c63ff"/>
+    <circle cx="264.19355" cy="177" r="9" fill="#6c63ff"/>
+</svg>
