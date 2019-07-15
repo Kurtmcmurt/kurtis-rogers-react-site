@@ -30,3 +30,8 @@
 .kkr--card-dark-bg-light-text {
   color: #ffffff;
 }
+
+.kkr--footer-50-wth-alt-clrbg {
+  width: 100%;
+  min-height: 200px;
+}

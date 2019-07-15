@@ -49,7 +49,7 @@ export default class Home extends PureComponent {
         >
           <Row type="flex" justify="center" style={{ alignItems: 'center' }}>
             <Col span={12}>
-              <Content style={{ padding: '50px' }}>
+              <Content style={{ padding: '80px 50px' }}>
                 <Card
                   headStyle={{
                     backgroundColor: purple.primary,
@@ -69,8 +69,9 @@ export default class Home extends PureComponent {
                     based in the Southville area of Bristol. involved in a
                     variety of projects which rely on a plethora of technologies
                     ranging from JavaScript to PHP. <Divider />
-                    Part of a strong team comprised of technologists, movie and
-                    game nerds. And it&apos;s delicious.
+                    Part of a strong team comprised of technologists, Dog
+                    enthusiasts, Barbecue specialists and movie and game nerds
+                    amongst many, many other things.
                   </Typography.Paragraph>
                 </Card>
               </Content>

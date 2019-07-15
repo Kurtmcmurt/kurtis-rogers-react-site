@@ -9,6 +9,10 @@ const { Content } = Layout;
 const { Title } = Typography;
 
 export default class PageBanner extends PureComponent {
+  componentDidMount = () => {
+    this.setState({ background: this.props.imgsrc });
+  };
+
   render() {
     const {
       title,
@@ -31,6 +35,7 @@ export default class PageBanner extends PureComponent {
     } = this.props;
 
     let TweenOneGroup = TweenOne.TweenOneGroup;
+    let TweenTwoGroup = TweenOne.TweenTwoGroup;
 
     const titleAnimation = {
       opacity: '1',
@@ -103,8 +108,8 @@ export default class PageBanner extends PureComponent {
                     style={{ padding: '0 50px' }}
                     span={12}
                   >
-                      <TweenOneGroup animation={titleSvgLeftAnim}>
-                      <object key='2' type="image/svg+xml" data={svg} />
+                    <TweenOneGroup animation={titleAnimation}>
+                      <object key="2" type="image/svg+xml" data={svg} />
                     </TweenOneGroup>
                   </Col>
                 </Fragment>
