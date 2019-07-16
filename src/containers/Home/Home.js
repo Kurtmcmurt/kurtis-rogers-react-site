@@ -3,7 +3,7 @@ import { Card, Row, Col, Layout, Icon, Typography, Divider, Tag } from 'antd';
 import PageBanner from './../../components/Elements/PageBanner';
 import { purple, magenta, blue, geekblue } from '@ant-design/colors';
 
-const { Title, Text } = Typography;
+const { Title, Text, Paragraph } = Typography;
 const { Content } = Layout;
 
 export default class Home extends PureComponent {
@@ -39,6 +39,15 @@ export default class Home extends PureComponent {
           isVis={false}
           svg={require('./../../assets/svg/undraw_code_review.svg')}
         />
+        <Row>
+          <Col span={24}>
+            <Content style={{ padding: '80px 50px' }}>
+            <Paragraph>
+              The site has been updated regularly for the last 5 years, it started off life as a simple HTML template when I first got into Web Development. I then built a few custom themes - some good, some not so good. I got lost in the world of "full stack" and had an identity crisis before understanding that the front-end is where I belong. As a self-professed non-creative, I guess it became obvious that - yes- I am creative, just not in a using-photoshop-or-drawing-illustrations kind of way. 
+            </Paragraph>
+            </Content>
+          </Col>
+        </Row>
         <div
           style={{
             background:
