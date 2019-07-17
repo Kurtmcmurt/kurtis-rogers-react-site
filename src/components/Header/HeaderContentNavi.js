@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Menu } from 'antd';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export default class HeaderContentNavi extends PureComponent {
   render() {

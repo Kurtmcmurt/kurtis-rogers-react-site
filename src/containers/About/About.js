@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Layout, Card, Row, Col } from 'antd';
+import { Layout } from 'antd';
 
 const { Content } = Layout;
 

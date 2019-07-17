@@ -1,16 +1,16 @@
 import React, { PureComponent, Fragment } from 'react';
-import { Row, Col, Typography, List, Icon } from 'antd';
+import { Row, Col, Typography, Icon } from 'antd';
 import { geekblue } from '@ant-design/colors';
 
 const { Paragraph } = Typography;
 
 export default class FooterContent extends PureComponent {
   render() {
-    const icons = [
-      { icon: 'facebook' },
-      { icon: 'twitter' },
-      { icon: 'linkedin' },
-      { icon: 'instagram' }
+    let icons = [
+      { name: 'facebook', link: 'google.com' },
+      { name: 'twitter', link: 'google.com' },
+      { name: 'linkedin', link: 'google.com' },
+      { name: 'instagram', link: 'google.com' }
     ];
 
     return (
@@ -24,9 +24,9 @@ export default class FooterContent extends PureComponent {
           }}
         >
           <div className="kkr--footer-50-wth-alt-clrbg">
-            <Row style={{ padding: '80px 50px' }}>
+            <Row style={{ padding: '80px 50px', textAlign: 'right' }}>
               <Col span={24}>
-                <div className="logo">
+                <div className="logo" style={{ margin: 0, textAlign: 'right' }}>
                   <Paragraph
                     code="true"
                     style={{
@@ -61,19 +61,32 @@ export default class FooterContent extends PureComponent {
                 >
                   Thanks for visiting.
                 </Paragraph>
-                <List
-                  style={{ textAlign: 'left' }}
-                  grid={{ gutter: 24, column: 4 }}
-                  dataSource={icons}
-                  renderItem={item => (
-                    <List.Item>
-                      <Icon
-                        style={{ fontSize: '40px', color: '#ffffff' }}
-                        type={item.icon}
-                      />
-                    </List.Item>
-                  )}
-                />
+                <div style={{ display: 'block' }}>
+                  <ul
+                    style={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      paddingLeft: '0'
+                    }}
+                  >
+                    {icons.map((icon, i) => (
+                      <li
+                        key={i}
+                        style={{ listStyleType: 'none', marginRight: '1em' }}
+                      >
+                        <a style={{ display: 'block' }} href={icon.link}>
+                          <Icon
+                            style={{
+                              color: '#ffffff',
+                              fontSize: '3em'
+                            }}
+                            type={icon.name}
+                          />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
                 <Fragment>
                   <div className="kkr--footer-nav-parent" />
                 </Fragment>

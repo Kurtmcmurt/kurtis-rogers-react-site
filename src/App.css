@@ -9,6 +9,12 @@
   align-items: center;
 }
 
+body,
+html,
+p {
+  color: #000000;
+}
+
 /** Main nav styles **/
 .kr--main-nav .ant-menu-item {
   padding: 0;

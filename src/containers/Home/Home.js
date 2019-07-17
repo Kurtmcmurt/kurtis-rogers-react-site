@@ -1,9 +1,10 @@
 import React, { PureComponent, Fragment } from 'react';
-import { Card, Row, Col, Layout, Icon, Typography, Divider, Tag } from 'antd';
+import { Card, Row, Col, Layout, Icon, Typography, Divider } from 'antd';
 import PageBanner from './../../components/Elements/PageBanner';
-import { purple, magenta, blue, geekblue } from '@ant-design/colors';
+import { purple, geekblue } from '@ant-design/colors';
+import Emoji from 'react-emoji-render';
 
-const { Title, Text, Paragraph } = Typography;
+const { Title, Paragraph, Text } = Typography;
 const { Content } = Layout;
 
 export default class Home extends PureComponent {
@@ -41,10 +42,18 @@ export default class Home extends PureComponent {
         />
         <Row>
           <Col span={24}>
-            <Content style={{ padding: '80px 50px' }}>
-            <Paragraph>
-              The site has been updated regularly for the last 5 years, it started off life as a simple HTML template when I first got into Web Development. I then built a few custom themes - some good, some not so good. I got lost in the world of "full stack" and had an identity crisis before understanding that the front-end is where I belong. As a self-professed non-creative, I guess it became obvious that - yes- I am creative, just not in a using-photoshop-or-drawing-illustrations kind of way. 
-            </Paragraph>
+            <Content
+              style={{
+                padding: '80px 50px',
+                maxWidth: '1200px',
+                margin: '0 auto',
+                textAlign: 'center'
+              }}
+            >
+              <Title level={2} style={{ marginBottom: '0' }}>
+                A professional Web Developer based in Bristol
+                <Emoji text=" <3:100:" />
+              </Title>
             </Content>
           </Col>
         </Row>

@@ -1,8 +1,7 @@
-import React, { Img, PureComponent, Fragment } from 'react';
-import { Layout, Divider, Button, Row, Col, Typography, Icon } from 'antd';
+import React, { PureComponent, Fragment } from 'react';
+import { Layout, Divider, Row, Col, Typography, Icon } from 'antd';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Animate from 'rc-animate';
 import TweenOne from 'rc-tween-one';
 
 const { Content } = Layout;
@@ -35,16 +34,10 @@ export default class PageBanner extends PureComponent {
     } = this.props;
 
     let TweenOneGroup = TweenOne.TweenOneGroup;
-    let TweenTwoGroup = TweenOne.TweenTwoGroup;
 
     const titleAnimation = {
       opacity: '1',
       transform: 'translate(0px, 0px)'
-    };
-
-    const titleSvgLeftAnim = {
-      opacity: '1',
-      transform: 'translate(0px. 0px)'
     };
 
     return (
@@ -74,14 +67,12 @@ export default class PageBanner extends PureComponent {
                     <div className="kr--banner-content-container">
                       <TweenOneGroup animation={titleAnimation}>
                         <Title
-                          visible
                           key="0"
                           style={{ marginBottom: '0', color: titlecolor }}
                         >
                           {title}
                         </Title>
                         <Title
-                          visible
                           key="1"
                           style={{ marginTop: '0', color: subtitlecolor }}
                           level={3}
@@ -109,7 +100,9 @@ export default class PageBanner extends PureComponent {
                     span={12}
                   >
                     <TweenOneGroup animation={titleAnimation}>
-                      <object key="2" type="image/svg+xml" data={svg} />
+                      <object key="2" type="image/svg+xml" data={svg}>
+                        Homepage banner SVG
+                      </object>
                     </TweenOneGroup>
                   </Col>
                 </Fragment>
@@ -124,7 +117,9 @@ export default class PageBanner extends PureComponent {
                       }}
                       type="image/svg+xml"
                       data={svg}
-                    />
+                    >
+                      Homepage banner SVG
+                    </object>
                   </Col>
                   <Col
                     style={{ display: 'flex', alignItems: 'center' }}
@@ -135,14 +130,12 @@ export default class PageBanner extends PureComponent {
                     <div className="kr--banner-content-container">
                       <TweenOneGroup animation={titleAnimation}>
                         <Title
-                          visible
                           key="0"
                           style={{ marginBottom: '0', color: titlecolor }}
                         >
                           {title}
                         </Title>
                         <Title
-                          visible
                           key="1"
                           style={{ marginTop: '0', color: subtitlecolor }}
                           level={3}
