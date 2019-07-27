@@ -27,11 +27,11 @@ export default class Home extends PureComponent {
         <PageBanner
           title="This was built with React and Ant Design"
           subtitle='"The world&apos;s second most popular React UI framework"'
-          bannercontent="Welcome to my website. I have been spending the last year focusing on developing my skills in advanced JavaScript application development. Having a deep knowledge of ES5 and a decent workable knwoledge of ESnext, I can build tomorrows applications."
-          link="/about"
-          buttontype="primary"
-          buttontext="Learn more"
-          icontype="right"
+          bannercontent="Welcome to my website. I have been spending the last year focusing on developing my skills in advanced JavaScript application development. Having a deep knowledge of ES5 and a decent workable knowledge of ESnext, I can build tomorrows applications."
+          // link="/about"
+          // buttontype="primary"
+          // buttontext="Learn more"
+          // icontype="right"
           bgcolor={geekblue.primary}
           imgsrc={require('../../assets/svg/wiggleSvg.svg')}
           minusmarginTop={this.state.height}

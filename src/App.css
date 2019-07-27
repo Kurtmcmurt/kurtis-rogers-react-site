@@ -1,3 +1,7 @@
+/* Main color list:
+purple: #1d39c4
+*/
+
 .logo {
   width: 120px;
   height: 31px;
@@ -40,4 +44,9 @@ p {
 .kkr--footer-50-wth-alt-clrbg {
   width: 100%;
   min-height: 200px;
+}
+
+.kr--btn-style-wht-bg {
+  background: #ffffff;
+  color: #1d39c4;
 }

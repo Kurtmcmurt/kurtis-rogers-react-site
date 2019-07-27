@@ -3,6 +3,7 @@ import { Layout, Divider, Row, Col, Typography, Icon } from 'antd';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import TweenOne from 'rc-tween-one';
+// import QueueAnim from 'rc-queue-anim';
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -23,6 +24,7 @@ export default class PageBanner extends PureComponent {
       link,
       buttontype,
       buttontext,
+      isBtnVis,
       imgsrc,
       bgcolor,
       icontype,
@@ -86,12 +88,14 @@ export default class PageBanner extends PureComponent {
                       >
                         {bannercontent}
                       </Typography.Paragraph>
-                      <Link
-                        className={`ant-btn ant-btn-${buttontype}`}
-                        to={link}
-                      >
-                        {buttontext} <Icon type={icontype} />
-                      </Link>
+                      {isBtnVis && (
+                        <Link
+                          className={`ant-btn ant-btn-${buttontype}`}
+                          to={link}
+                        >
+                          {buttontext} <Icon type={icontype} />
+                        </Link>
+                      )}
                     </div>
                   </Col>
                   <Col
@@ -147,12 +151,14 @@ export default class PageBanner extends PureComponent {
                       <p style={{ color: bannercontentcolor }}>
                         {bannercontent}
                       </p>
-                      <Link
-                        className={`ant-btn ant-btn-${buttontype}`}
-                        to={link}
-                      >
-                        {buttontext} <Icon type={icontype} />
-                      </Link>
+                      {isBtnVis && (
+                        <Link
+                          className={`ant-btn ant-btn-${buttontype}`}
+                          to={link}
+                        >
+                          {buttontext} <Icon type={icontype} />
+                        </Link>
+                      )}
                     </div>
                   </Col>
                 </Fragment>
@@ -178,6 +184,7 @@ PageBanner.propTypes = {
 };
 
 PageBanner.defaultProps = {
+  isBtnVis: false,
   title: 'This is the default value',
   titlecolor: '#ffffff',
   subtitle: 'This is the default vale for the subtitle',
