@@ -14,7 +14,7 @@ export default class Routes extends Component {
       <Fragment>
         <Route exact path="/" />
         <Route path="/about" component={About} />
-        <Route path="/topics" component={Contact} />
+        <Route path="/contact" component={Contact} />
       </Fragment>
     );
   }

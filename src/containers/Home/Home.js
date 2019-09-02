@@ -66,15 +66,15 @@ export default class Home extends PureComponent {
           }}
         >
           <Row type="flex" justify="center" style={{ alignItems: 'center' }}>
-            <Col span={12}>
-              <Content style={{ padding: '80px 50px' }}>
+            <Col sm={24} md={12} style={{ padding: '80px 50px' }}>
+              <Content>
                 <Card
                   headStyle={{
                     backgroundColor: purple.primary,
                     color: '#ffffff'
                   }}
-                  title={['Introduction ']}
-                  extra={<Icon style={{ color: '#ffffff' }} type="smile" />}
+                  title={'Introduction'}
+                  extra={<Icon spin={true} style={{ color: '#ffffff', fontSize: '30px' }} type="smile" />}
                   style={{ background: '#ffffff' }}
                 >
                   <Title level={2}>Hello and welcome.</Title>
@@ -94,7 +94,7 @@ export default class Home extends PureComponent {
                 </Card>
               </Content>
             </Col>
-            <Col span={12}>
+            <Col sm={24} md={12} style={{ padding: '0 50px' }}>
               <Title level={4} style={{ color: '#ffffff' }}>
                 &quot;I tend to choose picturesque, depth-yielding landscape
                 images for backgrounds on everything because I find nature

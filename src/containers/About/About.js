@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import { Layout, Icon, Card, Typography, Row, Col } from 'antd';
 import PageBanner from '../../components/Elements/PageBanner';
 import { purple, geekblue } from '@ant-design/colors';
-import InfoBanner from '../../components/Elements/InfoBanner';
+// import InfoBanner from '../../components/Elements/InfoBanner';
 
 const { Title, Text } = Typography;
 const { Content } = Layout;
@@ -33,7 +33,7 @@ export default class About extends PureComponent {
           title="About"
           subtitle=""
         />
-        <InfoBanner />
+        {/* <InfoBanner /> */}
         <Layout>
           <Content style={{ padding: '50px' }}>
             <Row gutter={8}>
