@@ -1,17 +1,17 @@
 import React, { PureComponent, Fragment } from "react";
-import { Row, Col, Typography, Icon } from "antd";
+import { Row, Col, Typography } from "antd";
 import { geekblue } from "@ant-design/colors";
 
 const { Paragraph } = Typography;
 
 export default class FooterContent extends PureComponent {
   render() {
-    let icons = [
-      { name: "facebook", link: "google.com" },
-      { name: "twitter", link: "google.com" },
-      { name: "linkedin", link: "google.com" },
-      { name: "instagram", link: "google.com" }
-    ];
+    // let icons = [
+    //   { name: "facebook", link: "google.com" },
+    //   { name: "twitter", link: "google.com" },
+    //   { name: "linkedin", link: "google.com" },
+    //   { name: "instagram", link: "google.com" }
+    // ];
 
     return (
       <Fragment>
@@ -50,7 +50,7 @@ export default class FooterContent extends PureComponent {
             >
               Thanks for visiting.
             </Paragraph>
-            <div style={{ display: "block" }}>
+            {/* <div style={{ display: "block" }}>
               <ul
                 style={{
                   display: "flex",
@@ -75,10 +75,10 @@ export default class FooterContent extends PureComponent {
                   </li>
                 ))}
               </ul>
-            </div>
-            <Fragment>
+            </div> */}
+            {/* <Fragment>
               <div className="kkr--footer-nav-parent" />
-            </Fragment>
+            </Fragment> */}
           </Col>
         </Row>
       </Fragment>

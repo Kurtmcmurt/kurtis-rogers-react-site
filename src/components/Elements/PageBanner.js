@@ -173,14 +173,14 @@ export default class PageBanner extends PureComponent {
 
 PageBanner.propTypes = {
   title: PropTypes.string.isRequired,
-  titlecolor: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-  bannercontent: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-  buttontype: PropTypes.string.isRequired,
-  icontype: PropTypes.string.isRequired,
-  imgsrc: PropTypes.string.isRequired,
-  svg: PropTypes.string.isRequired
+//   titlecolor: PropTypes.string.isRequired,
+//   subtitle: PropTypes.string.isRequired,
+//   bannercontent: PropTypes.string.isRequired,
+//   link: PropTypes.string.isRequired,
+//   buttontype: PropTypes.string.isRequired,
+//   icontype: PropTypes.string.isRequired,
+//   imgsrc: PropTypes.string.isRequired,
+//   svg: PropTypes.string.isRequired
 };
 
 PageBanner.defaultProps = {

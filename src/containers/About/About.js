@@ -1,10 +1,10 @@
 import React, { PureComponent, Fragment } from 'react';
-import { Layout, Icon, Card, Typography, Row, Col } from 'antd';
+import { Layout, Card, Row, Col } from 'antd';
 import PageBanner from '../../components/Elements/PageBanner';
-import { purple, geekblue } from '@ant-design/colors';
+import { geekblue } from '@ant-design/colors';
 // import InfoBanner from '../../components/Elements/InfoBanner';
 
-const { Title, Text } = Typography;
+// const { Title, Text } = Typography;
 const { Content } = Layout;
 
 export default class About extends PureComponent {

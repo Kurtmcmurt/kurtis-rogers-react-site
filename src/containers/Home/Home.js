@@ -4,7 +4,7 @@ import PageBanner from './../../components/Elements/PageBanner';
 import { purple, geekblue } from '@ant-design/colors';
 import Emoji from 'react-emoji-render';
 
-const { Title, Paragraph, Text } = Typography;
+const { Title } = Typography;
 const { Content } = Layout;
 
 export default class Home extends PureComponent {
