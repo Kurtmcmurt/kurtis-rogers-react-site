@@ -94,7 +94,7 @@ export default class Home extends PureComponent {
                 </Card>
               </Content>
             </Col>
-            <Col sm={24} md={12} style={{ padding: '0 50px' }}>
+            <Col className="kr--text-padding-bottom" sm={24} md={12} style={{ paddingLeft: '50px', paddingRight: '50px' }}>
               <Title level={4} style={{ color: '#ffffff' }}>
                 &quot;I tend to choose picturesque, depth-yielding landscape
                 images for backgrounds on everything because I find nature

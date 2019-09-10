@@ -30,8 +30,10 @@ export default class About extends PureComponent {
           minusmarginTop={this.state.height}
           // maintain vertical alignment of all content
           paddingtopcontent={this.state.height}
-          title="About"
-          subtitle=""
+          title="About me"
+          bannercontent="I'm no writer but I read a lots of fiction, mostly intrigued by the universes created by our lord, Stephen King."
+          subtitle="Warning: This page may contain some awful content."
+          svg={require('./../../assets/svg/undraw_about_me.svg')}
         />
         {/* <InfoBanner /> */}
         <Layout>

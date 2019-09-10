@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Layout } from 'antd';
 // import antd style - learn how to install with WebPack in future
 import 'antd/dist/antd.css';
-import './App.css';
+import './app.css';
 import HeaderContent from './components/Header/HeaderContent';
 import FooterContent from './components/Footer/FooterContent';
 import MainContent from './components/Main/MainContent';
