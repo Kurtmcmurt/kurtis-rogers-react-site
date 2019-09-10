@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Layout, Card, Row, Col } from 'antd';
 import PageBanner from '../../components/Elements/PageBanner';
-import { geekblue } from '@ant-design/colors';
+import { geekblue, cyan, blue } from '@ant-design/colors';
 // import InfoBanner from '../../components/Elements/InfoBanner';
 
 // const { Title, Text } = Typography;
@@ -25,7 +25,7 @@ export default class About extends PureComponent {
     return (
       <Fragment>
         <PageBanner
-          bgcolor={geekblue.primary}
+          bgcolor={blue[6]}
           imgsrc={require('../../assets/svg/wiggleSvg.svg')}
           minusmarginTop={this.state.height}
           // maintain vertical alignment of all content

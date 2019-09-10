@@ -16,8 +16,8 @@ export default class FooterContent extends PureComponent {
     return (
       <Fragment>
         <Row type='flex' style={{ textAlign: "right" }}>
-          <Col sm={24} md={12} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div className="logo" style={{ margin: 0, textAlign: "right" }}>
+          <Col xm={24} md={12} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="logo" style={{ display: 'flex' }}>
               <Paragraph
                 code="true"
                 style={{
@@ -31,7 +31,7 @@ export default class FooterContent extends PureComponent {
             </div>
           </Col>
           <Col
-            sm={24}
+            xs={24}
             md={12}
             style={{
               backgroundColor: `${geekblue.primary}`,

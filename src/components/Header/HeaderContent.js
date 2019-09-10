@@ -17,6 +17,7 @@ export default class HeaderContent extends PureComponent {
           </Paragraph>
         </div>
         <HeaderContentNavi />
+        
       </Fragment>
     );
   }
