@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Layout, Drawer } from 'antd';
+import { Layout } from 'antd';
 // import antd style - learn how to install with WebPack in future
 import 'antd/dist/antd.css';
 import './app.css';
