@@ -1,8 +1,8 @@
-import React, { PureComponent, Fragment } from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Home from '../../containers/Home/Home';
-import About from '../../containers/About/About';
-import Contact from '../../containers/Contact/Contact';
+import React, { PureComponent, Fragment } from "react";
+import { Switch, Route } from "react-router-dom";
+import Home from "../../containers/Home/Home";
+import About from "../../containers/About/About";
+import Contact from "../../containers/Contact/Contact";
 
 export default class MainContent extends PureComponent {
   render() {
