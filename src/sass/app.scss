@@ -87,3 +87,13 @@ p {
   }
 
 }
+
+.kr--mobile-menu-button {
+  display: none;
+}
+
+@include media-breakpoint-down(sm) {
+  .kr--mobile-menu-button {
+    display: block;
+  }
+}
