@@ -11,7 +11,7 @@ const { Title } = Typography;
 
 export default class About extends PureComponent {
   state = {
-    height: ''
+    height: '',
   };
 
   componentDidMount() {
@@ -40,8 +40,8 @@ export default class About extends PureComponent {
         {/* <InfoBanner /> */}
         <Layout>
           <Content style={{ padding: '50px' }}>
-            <Row gutter={8}>
-              <Col span={12}>
+            <Row>
+              <Col xs={24} md={12}>
                 <Card>
                   <Title level={2}>Web Developer based in Bristol</Title>
                   <p>
@@ -52,10 +52,10 @@ export default class About extends PureComponent {
                   </p>
                 </Card>
               </Col>
-              <Col span={6}>
+              <Col xs={24} md={6}>
                 <Card title={'Some content'}>Some content</Card>
               </Col>
-              <Col span={6}>
+              <Col xs={24} md={6}>
                 <Card title={'Some content'}>Some content</Card>
               </Col>
             </Row>

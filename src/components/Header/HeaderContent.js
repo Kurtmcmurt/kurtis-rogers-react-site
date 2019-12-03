@@ -6,7 +6,16 @@ import { NavLink } from "react-router-dom";
 const { Paragraph, Title } = Typography;
 
 export default class HeaderContent extends PureComponent {
-  state = { visible: false };
+  constructor() {
+    super();
+
+    this.state = { 
+      visible: false,
+      aboutColor: 'green'
+    };
+
+  }
+
 
   showDrawer = () => {
     this.setState({
@@ -34,14 +43,23 @@ export default class HeaderContent extends PureComponent {
         <HeaderContentNavi />
         <Button
           icon="menu"
-          shape="omitted"
           className="kr--mobile-menu-button"
           type="primary"
           style={{ borderRadius: "0" }}
           onClick={this.showDrawer}
         ></Button>
         <Drawer
-          title={<Title style={{ marginBottom: 0 }} level={4}>Kurtis Rogers</Title>}
+          className="kr--drawer-body"
+          title={
+            <div className="logo">
+              <Paragraph
+                code="true"
+                style={{ color: "#ffffff", height: "auto", marginBottom: 0 }}
+              >
+                Kurtis Rogers
+              </Paragraph>
+            </div>
+          }
           placement="right"
           closable={false}
           onClose={this.onClose}
@@ -49,23 +67,26 @@ export default class HeaderContent extends PureComponent {
           bodyStyle={{ backgroundColor: "#000000", padding: 0 }}
         >
           <Menu
+            className="kr--mobile-nav"
             theme={"dark"}
-            onClick={this.handleClick}
+            onClick={this.onClose}
             style={{ width: 256 }}
-            defaultOpenKeys={["sub1"]}
-            selectedKeys={[this.state.current]}
             mode="inline"
           >
             <Menu.Item key="1">
-              <NavLink exact to="/">
+              <NavLink activeClassName={"active"} exact to="/">
                 Home
               </NavLink>
             </Menu.Item>
             <Menu.Item key="2">
-              <NavLink to="/about">About</NavLink>
+              <NavLink activeClassName={"active"} to="/about">
+                About
+              </NavLink>
             </Menu.Item>
             <Menu.Item key="3">
-              <NavLink to="/contact">Contact</NavLink>
+              <NavLink activeClassName={"active"} to="/contact">
+                Contact
+              </NavLink>
             </Menu.Item>
           </Menu>
         </Drawer>
