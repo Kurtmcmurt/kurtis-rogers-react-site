@@ -4,6 +4,7 @@ import Home from "../../containers/Home/Home";
 import About from "../../containers/About/About";
 import Contact from "../../containers/Contact/Contact";
 import Blog from "../../containers/Blog/Blog";
+import Post from "../../containers/Post/Post";
 
 export default class MainContent extends PureComponent {
   render() {
@@ -11,9 +12,10 @@ export default class MainContent extends PureComponent {
       <Fragment>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/blog" component={Blog} />
-          <Route path="/contact" component={Contact} />
+          <Route path="/about" exact component={About} />
+          <Route path="/blog" exact component={Blog}/>
+          <Route path="/contact" exact component={Contact} />
+          <Route path={`/blog/:articleKey`} exact component={Post} />
         </Switch>
       </Fragment>
     );

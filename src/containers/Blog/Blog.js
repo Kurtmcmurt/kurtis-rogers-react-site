@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Layout, Typography, Card, Row, Col, Button } from 'antd';
 import axios from 'axios';
-import { relative } from 'path';
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -15,9 +14,13 @@ export default class Blog extends PureComponent {
   }
 
   componentDidMount() {
-    
-    axios
-      .get( 'http://kurtisrogers.loc/wp-json/wp/v2/posts' )
+    this.getPosts();
+    this.getPostImage();
+  }
+
+  getPosts = () => {
+    return axios
+      .get(`http://kurtisrogers.loc/wp-json/wp/v2/posts`)
       .then(response => {
         let postsData = response.data;
         this.setState({ blogData: postsData });
@@ -25,14 +28,11 @@ export default class Blog extends PureComponent {
       .catch(err => {
         console.log('err :', err);
       })
-
-    this.getPostImage();
-
   }
 
-  getPostImage() {
-    axios
-    .get( `http://kurtisrogers.loc/wp-json/wp/v2/media` )
+  getPostImage = () => {
+    return axios
+    .get(`http://kurtisrogers.loc/wp-json/wp/v2/media`)
     .then(response => {
       // return response.data.source_url;
       let postImageData = response.data;
@@ -43,21 +43,29 @@ export default class Blog extends PureComponent {
     })
   }
 
+  getArticle( articleKey ) {
+    const location = {
+      pathname: `/blog/${articleKey}`
+    }
+
+    return this.props.history.push(`${location.pathname}`);
+  }
+
   render() {
 
     const { blogData, blogPostImages } = this.state;
 
-
     return (
       <Layout>
         <Content style={{ padding: '50px' }}>
-          <div style={{ background: '#fff', padding: 24, textAlign: "center" }}>
+          <div style={{ background: '#fff', padding: 24 }}>
             <Title level={1}>Welcome to my blog</Title>
           </div>
           <Row style={{ paddingTop: '20px' }} gutter={20}>
 
             { 
               blogData.map((post, index) => {
+                console.log('post :', post);
                                 
                 return <Col key={index} span={6}>
                   <Card
@@ -65,7 +73,7 @@ export default class Blog extends PureComponent {
                   style={{ width: '100%' }}
                   cover={
                     <div style={{ 
-                      position:relative,
+                      position: 'relative',
                       width: '100%',
                       height: '100%',
                       maxHeight: '200px',
@@ -89,10 +97,7 @@ export default class Blog extends PureComponent {
                     </div>
                   }
                   actions={[
-                    // <Icon type="setting" key="setting" />,
-                    // <Icon type="edit" key="edit" />,
-                    // <Icon type="ellipsis" key="ellipsis" />,
-                    <Button type={'primary'}>View</Button>
+                    <Button onClick={() => this.getArticle(post.slug)} type={'primary'}>View</Button>
                   ]}
                   >
                     <Meta
