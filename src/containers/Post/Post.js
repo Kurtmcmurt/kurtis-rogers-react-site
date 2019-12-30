@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { PageHeader, Layout, Typography, Row, Col, Skeleton } from 'antd';
+import { PageHeader, Layout, Typography, Row, Col, Skeleton, Tag, Icon } from 'antd';
 import { withRouter } from "react-router-dom";
 
 const { Content } = Layout;
@@ -17,7 +17,7 @@ class Post extends Component {
         rendered: ''
       }
     },
-    blogPostImage: {},
+    blogPostImage: [],
     loading: true
   }
   
@@ -29,7 +29,7 @@ class Post extends Component {
   getPostData = () => {
     const articleKey = this.props.match.params.articleKey;
     axios
-      .get(`http://kurtisrogers.loc/wp-json/wp/v2/posts?slug=${articleKey}`)
+      .get(`https://news.kurtisrogers.com/wp-json/wp/v2/posts?slug=${articleKey}`)
       .then(resp => {
         const postData = resp.data[0];
         this.setState({ post: postData })
@@ -44,10 +44,10 @@ class Post extends Component {
 
   getPostImage = () => {
     return axios
-    .get(`http://kurtisrogers.loc/wp-json/wp/v2/media`)
+    .get(`https://news.kurtisrogers.com/wp-json/wp/v2/media`)
     .then(response => {
       // return response.data.source_url;
-      let postImageData = response.data[0];
+      let postImageData = response.data;
       this.setState({ blogPostImage: postImageData })
     })
     .catch(err => {
@@ -60,13 +60,15 @@ class Post extends Component {
   }
 
   handleContent( content ) {
-    return {__html: content};
+    return { __html: `${content}` };
   }
 
   render() {
     
     const { post, loading, blogPostImage } = this.state;
-    
+
+    console.log('featured :', post.featured_media);
+
     console.log('this.state.postData :', post);
     console.log('blogPostImage :', blogPostImage);
     
@@ -80,31 +82,55 @@ class Post extends Component {
           onBack={() => this.handleClick()}
           title="Go Back"
           subTitle={post ? post.title.rendered : null }
-        />
-        <Row type="flex" justify="space-around" align="middle">
+        >
+          <Content>
+            Some content for the page header sextion
+          </Content>
+        </PageHeader>
+        <Row style={{
+          textAlign: "center"
+        }} type="flex" justify="center" align="middle">
           <Col span={12}>
             <Skeleton loading={loading} active>
               <Title style={{
-                margin: "20px 0"
+                margin: "50px 0"
               }} level={1}>
                 {post ? post.title.rendered : null }
               </Title>
+              <Tag></Tag>
             </Skeleton>
-          </Col>
-          <Col span={12}>
-            <img 
-              style={{
-                width: "100%",
-                maxWidth: "100%",
-                display: "block",
-              }}
-              src={ blogPostImage ? blogPostImage.source_url : null } 
-              alt={ post ? post.title.rendered : null } />
           </Col>
         </Row>
         <Row>
-          <Col span={20}>
-            {post ? <div dangerouslySetInnerHTML={(this.handleContent(post.content.rendered))}></div> : null }
+          <Col xs={{ span: 24 }} md={{ span: 16, offset: 4 }}>
+            <Skeleton loading={loading} active>
+              {blogPostImage.map((image, key) => {
+                  console.log(image.id)
+                  return (
+                    image.id === post.featured_media ?
+                      <img 
+                      style={{
+                        width: "100%",
+                        maxWidth: "100%",
+                        display: "block",
+                      }}
+                      key={key}
+                      src={image.source_url}
+                      alt={ post ? post.title.rendered : null } />
+                    :
+                    null
+                  )
+                })
+              }
+            </Skeleton>
+          </Col>
+        </Row>
+        <Row style={{ marginTop: "50px" }} type="flex" justify="center" align="middle">
+          <Col xs={{ span: 24 }} md={{ span: 16 }}>
+            <Skeleton loading={loading} active>
+              {post ? <div dangerouslySetInnerHTML={(this.handleContent(post.content.rendered))}></div> : null }
+
+            </Skeleton>
           </Col>
         </Row>
         </Content>
