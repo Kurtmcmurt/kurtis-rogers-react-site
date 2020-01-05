@@ -139,3 +139,15 @@ p {
     display: block;
   }
 }
+
+.kkr-post-content-wrapper {
+  .wp-block-image {
+    img {
+      display: block;
+      height: auto;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+}

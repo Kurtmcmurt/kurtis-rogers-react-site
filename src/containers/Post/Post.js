@@ -128,7 +128,7 @@ class Post extends Component {
         <Row style={{ marginTop: "50px" }} type="flex" justify="center" align="middle">
           <Col xs={{ span: 24 }} md={{ span: 16 }}>
             <Skeleton loading={loading} active>
-              {post ? <div dangerouslySetInnerHTML={(this.handleContent(post.content.rendered))}></div> : null }
+              {post ? <div className="kkr-post-content-wrapper" dangerouslySetInnerHTML={(this.handleContent(post.content.rendered))}></div> : null }
 
             </Skeleton>
           </Col>

@@ -79,7 +79,7 @@ export default class Blog extends PureComponent {
                 blogData.map((post, index) => {
                   console.log('post :', post);
                                   
-                  return <Col key={index} span={6}>
+                  return <Col key={index} xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 6 }}>
                     <Card
                     key={ index }
                     style={{ width: '100%' }}

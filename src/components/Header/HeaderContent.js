@@ -84,6 +84,11 @@ export default class HeaderContent extends PureComponent {
               </NavLink>
             </Menu.Item>
             <Menu.Item key="3">
+              <NavLink activeClassName={"active"} to="/blog">
+                Blog
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item key="4">
               <NavLink activeClassName={"active"} to="/contact">
                 Contact
               </NavLink>
