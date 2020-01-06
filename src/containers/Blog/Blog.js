@@ -1,8 +1,9 @@
 import React, { PureComponent, Fragment } from 'react';
-import { Layout, Typography, Card, Row, Col, Button, Color } from 'antd';
+import { Layout, Typography, Card, Row, Col, Button, Color, Avatar } from 'antd';
 import axios from 'axios';
 import PageBanner from '../../components/Elements/PageBanner';
 import { grey } from '@ant-design/colors';
+import moment from 'moment';
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -113,8 +114,9 @@ export default class Blog extends PureComponent {
                     ]}
                     >
                       <Meta
+                        avatar={<Avatar src="" />}
                         title={post.title.rendered}
-                        description="This is the description"
+                        description={ 'Published: ' + moment( post.date ).format( 'D/M/YYYY' )}
                         />
                     </Card>
                   </Col>
