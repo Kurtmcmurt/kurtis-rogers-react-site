@@ -21,9 +21,9 @@ export default class Blog extends PureComponent {
   }
 
   componentDidMount() {
-    this.getUserInfo();
     this.getPosts();
     this.getPostImage();
+    this.getUserInfo();
   }
 
   getPosts = () => {
@@ -63,7 +63,7 @@ export default class Blog extends PureComponent {
     return axios
       .get('https://news.kurtisrogers.com/wp-json/wp/v2/users')
       .then(response => {
-        let postUserData = response.data;
+        let postUserData = response.data[0];
         this.setState({ blogPostAuthorData: postUserData })
       })
       .catch(err => {
@@ -140,7 +140,7 @@ export default class Blog extends PureComponent {
                     ]}
                     >
                       <Meta
-                        avatar={<Avatar src={ post.author === blogPostAuthorData[0].id ? blogPostAuthorData[0].avatar_urls[96] : null } />}
+                        avatar={<Avatar src={ post.author === blogPostAuthorData.id ? blogPostAuthorData.avatar_urls[96] : null } />}
                         title={post.title.rendered}
                         description={ 'Published: ' + moment( post.date ).format( 'D/M/YYYY' )}
                         />
