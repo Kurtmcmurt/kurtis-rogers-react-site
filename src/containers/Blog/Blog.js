@@ -13,10 +13,15 @@ export default class Blog extends PureComponent {
   
   state = {
     blogData: [],
-    blogPostImages: []
+    blogPostImages: [],
+    blogPostAuthorData: {
+      id: null,
+      avatar_urls: {}
+    }
   }
 
   componentDidMount() {
+    this.getUserInfo();
     this.getPosts();
     this.getPostImage();
   }
@@ -54,9 +59,24 @@ export default class Blog extends PureComponent {
     return this.props.history.push(`${location.pathname}`);
   }
 
+  getUserInfo = () => {
+    return axios
+      .get('https://news.kurtisrogers.com/wp-json/wp/v2/users')
+      .then(response => {
+        let postUserData = response.data;
+        this.setState({ blogPostAuthorData: postUserData })
+      })
+      .catch(err => {
+        console.log('err :', err);
+      })
+  }
+
   render() {
 
-    const { blogData, blogPostImages } = this.state;
+    const { blogData, blogPostImages, blogPostAuthorData } = this.state;
+
+    // console.log('this.props :', this.props);
+    // console.log('Author data :', blogPostAuthorData);
 
     return (
       <Fragment>
@@ -78,7 +98,13 @@ export default class Blog extends PureComponent {
 
               { 
                 blogData.map((post, index) => {
-                  console.log('post :', post);
+                  // console.log('post :', post);
+
+                  // console.log( 'blogPostAuthorData.id :', blogPostAuthorData[0].avatar_urls[96] );
+                  // console.log( 'blogPostAuthorData :', blogPostAuthorData );
+                  // console.log( 'post.author : ', post.author );
+
+                  // console.log('is it working? :', post.author === blogPostAuthorData[0].id ? blogPostAuthorData[0].avatar_urls[96] : null);
                                   
                   return <Col key={index} xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 6 }}>
                     <Card
@@ -114,7 +140,7 @@ export default class Blog extends PureComponent {
                     ]}
                     >
                       <Meta
-                        avatar={<Avatar src="" />}
+                        avatar={<Avatar src={ post.author === blogPostAuthorData[0].id ? blogPostAuthorData[0].avatar_urls[96] : null } />}
                         title={post.title.rendered}
                         description={ 'Published: ' + moment( post.date ).format( 'D/M/YYYY' )}
                         />
