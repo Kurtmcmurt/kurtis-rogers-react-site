@@ -63,7 +63,7 @@ export default class Blog extends PureComponent {
     return axios
       .get('https://news.kurtisrogers.com/wp-json/wp/v2/users')
       .then(response => {
-        let postUserData = response.data[0];
+        let postUserData = response.data;
         this.setState({ blogPostAuthorData: postUserData })
       })
       .catch(err => {
@@ -96,15 +96,7 @@ export default class Blog extends PureComponent {
           <Content style={{ padding: '50px' }}>
             <Row style={{ paddingTop: '20px' }} gutter={20}>
 
-              { 
-                blogData.map((post, index) => {
-                  // console.log('post :', post);
-
-                  // console.log( 'blogPostAuthorData.id :', blogPostAuthorData[0].avatar_urls[96] );
-                  // console.log( 'blogPostAuthorData :', blogPostAuthorData );
-                  // console.log( 'post.author : ', post.author );
-
-                  // console.log('is it working? :', post.author === blogPostAuthorData[0].id ? blogPostAuthorData[0].avatar_urls[96] : null);
+              { blogData.map((post, index) => {
                                   
                   return <Col key={index} xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 6 }}>
                     <Card
@@ -139,11 +131,14 @@ export default class Blog extends PureComponent {
                       <Button onClick={() => this.getArticle(post.slug)} type={'primary'}>View</Button>
                     ]}
                     >
-                      <Meta
-                        avatar={<Avatar src={ post.author === blogPostAuthorData.id ? blogPostAuthorData.avatar_urls[96] : null } />}
-                        title={post.title.rendered}
-                        description={ 'Published: ' + moment( post.date ).format( 'D/M/YYYY' )}
-                        />
+                      { Array.from(blogPostAuthorData).map((author, key) => {
+                        return post.author === author.id ? <Meta
+                          key={key}
+                          avatar={<Avatar src={ post.author === author.id ? author.avatar_urls[96] : null } />}
+                          title={post.title.rendered}
+                          description={ 'Published: ' + moment( post.date ).format( 'D/M/YYYY' )}
+                          /> : null
+                      }) }
                     </Card>
                   </Col>
                     

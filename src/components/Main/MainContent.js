@@ -5,8 +5,10 @@ import About from "../../containers/About/About";
 import Contact from "../../containers/Contact/Contact";
 import Blog from "../../containers/Blog/Blog";
 import Post from "../../containers/Post/Post";
+import axios from "axios";
 
 export default class MainContent extends PureComponent {
+  
   render() {
     return (
       <Fragment>

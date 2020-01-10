@@ -24,6 +24,9 @@ export default class About extends PureComponent {
   }
 
   render() {
+
+    console.log(this.props.blogdata);
+
     return (
       <Fragment>
         <PageBanner
