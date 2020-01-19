@@ -5,7 +5,7 @@ import About from "../../containers/About/About";
 import Contact from "../../containers/Contact/Contact";
 import Blog from "../../containers/Blog/Blog";
 import Post from "../../containers/Post/Post";
-import axios from "axios";
+import BlogCategories from "../../containers/Blog/BlogCategories";
 
 export default class MainContent extends PureComponent {
   
@@ -15,7 +15,7 @@ export default class MainContent extends PureComponent {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/about" exact component={About} />
-          <Route path="/blog" exact component={Blog}/>
+          <Route path="/blog" exact component={BlogCategories}/>
           <Route path="/contact" exact component={Contact} />
           <Route path={`/blog/:articleKey`} exact component={Post} />
         </Switch>

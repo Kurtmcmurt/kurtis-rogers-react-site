@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
-import { Layout, Typography, Card, Row, Col, Button, Color, Avatar } from 'antd';
+import { Layout, Typography, Card, Row, Col, Button, Avatar, Spin, Icon } from 'antd';
 import axios from 'axios';
 import PageBanner from '../../components/Elements/PageBanner';
 import { grey } from '@ant-design/colors';
@@ -17,7 +17,9 @@ export default class Blog extends PureComponent {
     blogPostAuthorData: {
       id: null,
       avatar_urls: {}
-    }
+    },
+    catPosts: [],
+    loading: true
   }
 
   componentDidMount() {
@@ -31,7 +33,7 @@ export default class Blog extends PureComponent {
       .get(`https://news.kurtisrogers.com/wp-json/wp/v2/posts`)
       .then(response => {
         let postsData = response.data;
-        this.setState({ blogData: postsData });
+        this.setState(() => ({ blogData: postsData, loading: false }));
       })
       .catch(err => {
         console.log('err :', err);
@@ -44,7 +46,9 @@ export default class Blog extends PureComponent {
     .then(response => {
       // return response.data.source_url;
       let postImageData = response.data;
-      this.setState({ blogPostImages: postImageData })
+      this.setState(() => ({ 
+        blogPostImages: postImageData 
+      }))
     })
     .catch(err => {
       console.log('err :', err);
@@ -59,12 +63,31 @@ export default class Blog extends PureComponent {
     return this.props.history.push(`${location.pathname}`);
   }
 
+  handleCatsClick( catId ) {
+
+    return axios
+      .get( `https://news.kurtisrogers.com/wp-json/wp/v2/posts/?categories=${catId}` )
+      .then(response => {
+        let catPosts = response.data;
+        this.setState(() => ({ 
+          blogData: catPosts 
+        }))
+        // console.log('object :', this.state.catPosts);
+        this.setState({ loading: false })
+      })
+      .catch(err => {
+        console.log('err :', err);
+      })
+  }
+
   getUserInfo = () => {
     return axios
       .get('https://news.kurtisrogers.com/wp-json/wp/v2/users')
       .then(response => {
         let postUserData = response.data;
-        this.setState({ blogPostAuthorData: postUserData })
+        this.setState(() => ({ 
+          blogPostAuthorData: postUserData 
+        }))
       })
       .catch(err => {
         console.log('err :', err);
@@ -73,10 +96,10 @@ export default class Blog extends PureComponent {
 
   render() {
 
-    const { blogData, blogPostImages, blogPostAuthorData } = this.state;
-
-    // console.log('this.props :', this.props);
+    const { blogData, blogPostImages, blogPostAuthorData, loading } = this.state;
     // console.log('Author data :', blogPostAuthorData);
+    console.log('props :', this.props.catButtons);
+    const { catButtons } = this.props;
 
     return (
       <Fragment>
@@ -94,9 +117,27 @@ export default class Blog extends PureComponent {
         {/* <InfoBanner /> */}
         <Layout>
           <Content style={{ padding: '50px' }}>
+
+            {/* Check for the state value exists */}
+            { catButtons ? <Button onClick={() => this.getPosts()}>All</Button> : null }
+
+            {Array.from( catButtons ).map((cat) => {
+              return (
+                <Button 
+                  category={ cat.slug }
+                  onClick={ () => this.handleCatsClick( cat.id ) }
+                  key={cat.slug}>
+                  {cat.name}
+                </Button>
+              )
+            })}
+
+
+            { loading ? <div style={{ width: '100%', textAlign: 'center' }}><Icon type="loading" style={{ fontSize: 24 }} spin /></div> : null }
+
             <Row style={{ paddingTop: '20px' }} gutter={20}>
 
-              { blogData.map((post, index) => {
+                { blogData.map((post, index) => {
                                   
                   return <Col key={index} xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 6 }}>
                     <Card
@@ -141,8 +182,6 @@ export default class Blog extends PureComponent {
                       }) }
                     </Card>
                   </Col>
-                    
-
                 }) 
               }
             </Row>
