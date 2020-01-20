@@ -54,7 +54,7 @@ class BlogCategories extends PureComponent {
     const { cats, catPosts } = this.state;
 
     return (
-      <Blog catButtons={cats} />
+      <Blog history={this.props.history} catButtons={cats} />
     )
   }
 }

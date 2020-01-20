@@ -98,7 +98,7 @@ export default class Blog extends PureComponent {
 
     const { blogData, blogPostImages, blogPostAuthorData, loading } = this.state;
     // console.log('Author data :', blogPostAuthorData);
-    console.log('props :', this.props.catButtons);
+    // console.log('props :', this.props.catButtons);
     const { catButtons } = this.props;
 
     return (
@@ -131,7 +131,6 @@ export default class Blog extends PureComponent {
                 </Button>
               )
             })}
-
 
             { loading ? <div style={{ width: '100%', textAlign: 'center' }}><Icon type="loading" style={{ fontSize: 24 }} spin /></div> : null }
 
