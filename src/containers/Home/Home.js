@@ -25,9 +25,9 @@ export default class Home extends PureComponent {
     return (
       <Fragment>
         <PageBanner
-          title="This was built with React and Ant Design"
-          subtitle='"The world&apos;s second most popular React UI framework"'
-          bannercontent="Welcome to my website. I have been spending the last year focusing on developing my skills in advanced JavaScript application development. Having a deep knowledge of ES5 and a decent workable knowledge of ESnext, I can build tomorrows applications."
+          title="Welcome to the website of Kurtis Rogers"
+          subtitle='A WordPress/React Developer living and working in Bristol'
+          bannercontent="Here I sometimes post on the blog, occassionally add features and change bits and bobs depending on how I feel."
           // link="/about"
           // buttontype="primary"
           // buttontext="Learn more"
