@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
-import { Layout, Divider, Row, Col, Typography, Icon } from 'antd';
+import { Layout, Divider, Row, Col, Typography, Icon, Button } from 'antd';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import TweenOne from 'rc-tween-one';
@@ -32,7 +32,8 @@ export default class PageBanner extends PureComponent {
       svg,
       isVis,
       direction,
-      paddingtopcontent
+      paddingtopcontent,
+      buttons
     } = this.props;
 
     let TweenOneGroup = TweenOne.TweenOneGroup;
@@ -158,6 +159,20 @@ export default class PageBanner extends PureComponent {
                         >
                           {buttontext} <Icon type={icontype} />
                         </Link>
+                      )}
+                      {buttons && (
+                        buttons.map((button, i) => {
+                          return (
+                            <Button
+                              key={i} 
+                              style={(button.style)} 
+                              icon={button.icon} 
+                              target={button.target}
+                              href={`${button.link}`}>
+                              {button.title}
+                            </Button>
+                          )
+                        })
                       )}
                     </div>
                   </Col>

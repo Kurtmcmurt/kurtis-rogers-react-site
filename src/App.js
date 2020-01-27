@@ -11,6 +11,55 @@ import MainContent from "./components/Main/MainContent";
 const { Header, Footer } = Layout;
 
 class App extends PureComponent {
+
+  constructor (props) {
+    super(props);
+    this.state = {
+      page: {
+        metadesc: null,
+        metaauthor: null,
+        metaviewport: null
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.handleFacebookMeta();
+  }
+
+  handleFacebookMeta = () => {
+
+    const tags = [
+      {
+        name: "description",
+        content: this.state.page.metadesc
+      },
+      {
+        name: "author",
+        content: this.state.page.metaauthor
+      },
+      {
+        name: "viewport",
+        content: this.state.page.metaviewport
+      }
+    ]
+
+    const header  = document.getElementsByTagName('head');
+    const metaTag = document.createElement('meta');
+    
+    tags.map((tag, i) => {
+      const metaElement = document.createAttribute(tag.name);
+      metaElement.value = tag.content;
+      
+      console.log(tag.name, tag.content, i);
+      console.log(header);
+
+      let headerMeta = header[0].appendChild(metaTag);
+      headerMeta.setAttributeNode(metaElement);
+
+    })
+
+  }
   
   render() {
     return (
@@ -27,7 +76,11 @@ class App extends PureComponent {
             >
               <HeaderContent />
             </Header>
-            <MainContent /> 
+            <MainContent 
+              metaauthor={this.state.page.metaauthor}
+              metaviewport={this.state.page.metaviewport}
+              metadescription={this.state.page.metadesc}
+            /> 
             <Footer
               style={{
                 backgroundColor: "#001529",

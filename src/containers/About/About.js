@@ -31,7 +31,7 @@ export default class About extends PureComponent {
       <Fragment>
         <PageBanner
           bgcolor={grey[6]}
-          imgsrc={require('../../assets/svg/wiggleSvg.svg')}
+          imgsrc={require('../../assets/svg/steel-beams.svg')}
           minusmarginTop={this.state.height}
           // maintain vertical alignment of all content
           paddingtopcontent={this.state.height}

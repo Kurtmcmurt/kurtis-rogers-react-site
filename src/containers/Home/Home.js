@@ -17,7 +17,12 @@ export default class Home extends PureComponent {
       .clientHeight;
 
     this.setState({
-      height: headerHeight
+      height: headerHeight,
+      page: {
+        metadesc: 'Home',
+        metaauthor: 'Kurtis Rogers',
+        metaviewport: 'width=device-width, initial-scale=1.0'
+      }
     });
   }
 
@@ -25,20 +30,32 @@ export default class Home extends PureComponent {
     return (
       <Fragment>
         <PageBanner
-          title="Welcome to the website of Kurtis Rogers"
+          title="Kurtis Rogers"
           subtitle='A WordPress/React Developer living and working in Bristol'
           bannercontent="Here I sometimes post on the blog, occassionally add features and change bits and bobs depending on how I feel."
-          // link="/about"
-          // buttontype="primary"
-          // buttontext="Learn more"
-          // icontype="right"
           bgcolor={geekblue.primary}
-          imgsrc={require('../../assets/svg/wiggleSvg.svg')}
+          imgsrc={require('../../assets/svg/overcast.svg')}
           minusmarginTop={this.state.height}
-          // maintain vertical alignment of all content
           paddingtopcontent={this.state.height}
           isVis={false}
           svg={require('./../../assets/svg/undraw_code_review.svg')}
+          buttons={[
+            {
+              title: 'Download the site!', 
+              link: 'https://github.com/Kurtmcmurt/kurtis-rogers-react-site', 
+              target: '_blank',
+              icon: 'github'
+            },
+            {
+              title: 'Connect on LinkedIn', 
+              link: 'https://www.linkedin.com/in/kurtis-rogers-bb1366149',
+              target: '_blank', 
+              icon: 'linkedin', 
+              style: {
+                marginLeft: '20px'
+              }
+            }
+          ]}
         />
         <Row>
           <Col span={24}>

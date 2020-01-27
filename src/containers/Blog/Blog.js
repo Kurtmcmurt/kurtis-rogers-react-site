@@ -105,7 +105,7 @@ export default class Blog extends PureComponent {
       <Fragment>
         <PageBanner
           bgcolor={grey[6]}
-          imgsrc={require('../../assets/svg/bubbles.svg')}
+          imgsrc={require('../../assets/svg/glamorous.svg')}
           minusmarginTop={this.state.height}
           // maintain vertical alignment of all content
           paddingtopcontent={this.state.height}
