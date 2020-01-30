@@ -3,7 +3,6 @@ import { Switch, Route } from "react-router-dom";
 import Home from "../../containers/Home/Home";
 import About from "../../containers/About/About";
 import Contact from "../../containers/Contact/Contact";
-import Blog from "../../containers/Blog/Blog";
 import Post from "../../containers/Post/Post";
 import BlogCategories from "../../containers/Blog/BlogCategories";
 
