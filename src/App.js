@@ -8,73 +8,30 @@ import HeaderContent from "./components/Header/HeaderContent";
 import FooterContent from "./components/Footer/FooterContent";
 import MainContent from "./components/Main/MainContent";
 
-import { metaData } from "./actions";
-import rootReducer from "./reducers";
-import { createStore, bindActionCreators } from 'redux';
-import { Provider, connect } from 'react-redux';
+import Helmet from "react-helmet";
 
 const { Header, Footer } = Layout;
 
 export default class App extends PureComponent {
-
-  componentDidMount() {
-    // this.handleFacebookMeta();
-    this.thisSetState();
-  }
-
-  thisSetState = () => {
-    this.setState({ getMeta: [{
-      type:  "viewport",
-      content: "some content" 
-    }] });
-  }
-
-  // handleFacebookMeta = () => {
-
-  //   const tags = [
-  //     {
-  //       name: "description",
-  //       content: this.state.page.metadesc
-  //     },
-  //     {
-  //       name: "author",
-  //       content: this.state.page.metaauthor
-  //     },
-  //     {
-  //       name: "viewport",
-  //       content: this.state.page.metaviewport
-  //     }
-  //   ]
-
-  //   const header  = document.getElementsByTagName('head');
-  //   const metaTag = document.createElement('meta');
-    
-  //   tags.map((tag, i) => {
-  //     const metaElement = document.createAttribute(tag.name);
-  //     metaElement.value = tag.content;
-      
-  //     console.log(tag.name, tag.content, i);
-  //     console.log(header);
-
-  //     let headerMeta = header[0].appendChild(metaTag);
-  //     headerMeta.setAttributeNode(metaElement);
-
-  //   })
-
-  // }
   
+  state = {
+    pageTitle: null,
+    pageUrl: null
+  } 
+
   render() {
-
-    // const meta = useSelector(state => state.getmetadata);
-
-    // console.log('meta: ', meta);
-
-    const store = createStore(rootReducer);
-
     return (
-        <Router>
+        <Router 
+          title={this.state.pageTitle}
+          url={this.state.pageUrl} 
+        >
           <div className="App" style={{ overflow: "hidden" }}>
             <Layout style={{ minHeight: "100vh" }} className="layout">
+              <Helmet>
+                <meta charSet="utf-8" />
+                <title>{this.state.pageTitle}</title>
+                <link rel="canonical" href={`https://kurtisrogers/${this.state.pageUrl}`} />
+              </Helmet>
               <Header
                 style={{
                   display: "flex",
@@ -85,13 +42,7 @@ export default class App extends PureComponent {
               >
                 <HeaderContent />
               </Header>
-              <Provider store={store}> 
-                <MainContent 
-                // metaauthor={this.state.page.metaauthor}
-                // metaviewport={this.state.page.metaviewport}
-                // metadescription={this.state.page.metadesc}
-                />
-              </Provider>
+              <MainContent />
               <Footer
                 style={{
                   backgroundColor: "#001529",
@@ -107,12 +58,3 @@ export default class App extends PureComponent {
     );
   }
 }
-
-connect(
-  (state) => ({
-    state: state.reducer
-  }),
-  (dispatch) => ({
-    actions: bindActionCreators(metaData, dispatch)
-  })
-)( MainContent );

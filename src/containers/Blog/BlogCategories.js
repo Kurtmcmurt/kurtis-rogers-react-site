@@ -1,7 +1,9 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import axios from 'axios'
 import { Button } from 'antd';
 import Blog from './Blog';
+
+import Helmet from 'react-helmet';
 
 class BlogCategories extends PureComponent {
 
@@ -30,31 +32,17 @@ class BlogCategories extends PureComponent {
       })
   }
 
-  // getPostsByCategories( catId ) {
-  //   return axios
-  //     .get( `https://news.kurtisrogers.com/wp-json/wp/v2/posts/?categories=${catId}` )
-  //     .then(response => {
-  //       let catPosts = response.data;
-  //       this.setState({ catPosts })
-  //       // console.log('object :', this.state.catPosts);
-  //     })
-  //     .catch(err => {
-  //       console.log('err :', err);
-  //     })
-  // }
-
-  // handleCatsClick = catId => {
-  //   console.log('e.value :', catId);
-
-  //   this.getPostsByCategories( catId );
-  // }
-
   render() {
 
     const { cats, catPosts } = this.state;
 
     return (
-      <Blog history={this.props.history} catButtons={cats} />
+      <Fragment>
+        <Helmet>
+          <title>Blog | Bristol Web Developer | kurtisrogers.com</title>
+        </Helmet>
+        <Blog history={this.props.history} catButtons={cats} />
+      </Fragment>
     )
   }
 }

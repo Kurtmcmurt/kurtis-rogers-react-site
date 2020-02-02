@@ -2,9 +2,8 @@ import React, { PureComponent, Fragment } from 'react';
 import { Layout, Card, Row, Col, Typography, Timeline, Icon } from 'antd';
 import PageBanner from '../../components/Elements/PageBanner';
 import { grey } from '@ant-design/colors';
-// import InfoBanner from '../../components/Elements/InfoBanner';
+import Helmet from 'react-helmet';
 
-// const { Title, Text } = Typography;
 const { Content } = Layout;
 
 const { Title } = Typography;
@@ -19,7 +18,8 @@ export default class About extends PureComponent {
       .clientHeight;
 
     this.setState({
-      height: headerHeight
+      height: headerHeight,
+      pageTitle: 'about'
     });
   }
 
@@ -27,8 +27,14 @@ export default class About extends PureComponent {
 
     console.log(this.props.blogdata);
 
+    console.log('this.props', this.props);
+    console.log('this.state', this.state);
+
     return (
       <Fragment>
+        <Helmet>
+          <title>About | Bristol Web Developer | kurtisrogers.com</title>
+        </Helmet>
         <PageBanner
           bgcolor={grey[6]}
           imgsrc={require('../../assets/svg/steel-beams.svg')}

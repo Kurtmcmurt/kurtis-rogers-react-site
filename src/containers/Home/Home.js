@@ -4,6 +4,8 @@ import PageBanner from './../../components/Elements/PageBanner';
 import { purple, geekblue } from '@ant-design/colors';
 import Emoji from 'react-emoji-render';
 
+import Helmet from 'react-helmet';
+
 const { Title } = Typography;
 const { Content } = Layout;
 
@@ -29,6 +31,9 @@ export default class Home extends PureComponent {
   render() {
     return (
       <Fragment>
+        <Helmet>
+          <title>Home | Bristol Web Developer | kurtisrogers.com</title>
+        </Helmet>
         <PageBanner
           title="Kurtis Rogers"
           subtitle='A WordPress/React Developer living and working in Bristol'
