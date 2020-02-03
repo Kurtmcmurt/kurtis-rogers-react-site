@@ -1,16 +1,28 @@
 import React, { PureComponent, Fragment } from 'react';
-import { Layout, Card, Row, Col, Typography, Timeline, Icon } from 'antd';
+import { Layout, Card, Row, Col, Typography, Timeline, Icon, Avatar, Button } from 'antd';
 import PageBanner from '../../components/Elements/PageBanner';
 import { grey } from '@ant-design/colors';
 import Helmet from 'react-helmet';
+import axios from 'axios';
+import moment from 'moment';
 
+const { Meta } = Card;
 const { Content } = Layout;
-
 const { Title } = Typography;
+
+const apiUrl = 'https://news.kurtisrogers.com';
+const apiUrlObjs = {
+  posts: `${apiUrl}/wp-json/wp/v2/posts`,
+  media: `${apiUrl}/wp-json/wp/v2/media`,
+  users: `${apiUrl}/wp-json/wp/v2/users`
+}
 
 export default class About extends PureComponent {
   state = {
     height: '',
+    posts: [],
+    media: [],
+    users: []
   };
 
   componentDidMount() {
@@ -19,11 +31,63 @@ export default class About extends PureComponent {
 
     this.setState({
       height: headerHeight,
-      pageTitle: 'about'
     });
+
+    this.handleGetPosts();
+    this.handleGetMedia();
+    this.handleGetUsers();
+  }
+
+  handleGetPosts = () => {
+    axios
+      .get(apiUrlObjs.posts)
+      .then(response => {
+        // console.log('posts: ', response.data);
+        const posts = response.data;
+        this.setState({ posts });
+      })
+      .catch(err => {
+        console.log('error: ', err);
+      })
+  }
+
+  handleGetMedia = () => {
+    axios
+      .get(apiUrlObjs.media)
+      .then(response => {
+        // console.log('posts: ', response.data);
+        const media = response.data;
+        this.setState({ media });
+      })
+      .catch(err => {
+        console.log('error: ', err);
+      })
+  }
+
+  handleGetUsers = () => {
+    axios
+      .get(apiUrlObjs.users)
+      .then(response => {
+        // console.log('posts: ', response.data);
+        const users = response.data;
+        this.setState({ users }); 
+      })
+      .catch(err => {
+        console.log('error: ', err);
+      })
+  }
+
+  getArticle( articleKey ) {
+    const location = {
+      pathname: `/blog/${articleKey}`
+    }
+
+    return this.props.history.push(`${location.pathname}`);
   }
 
   render() {
+
+    const { posts, media, users } = this.state;
 
     console.log(this.props.blogdata);
 
@@ -50,7 +114,7 @@ export default class About extends PureComponent {
         <Layout>
           <Content style={{ padding: '50px' }}>
             <Row gutter={16}>
-              <Col xs={24} md={12}>
+              <Col xs={24} md={18}>
                 <Card>
                   <Title style={{textDecoration: 'underline'}} level={2}>Web Developer based in Bristol</Title>
                   <p>
@@ -80,10 +144,54 @@ export default class About extends PureComponent {
                 </Card>
               </Col>
               <Col xs={24} md={6}>
-                <Card title={'Some content'}>Some content</Card>
-              </Col>
-              <Col xs={24} md={6}>
-                <Card title={'Some content'}>Some content</Card>
+                { 
+                  posts.map((post, key) => {
+                    return (
+                      <Card 
+                        cover={
+                          <div style={{ 
+                            position: 'relative',
+                            width: '100%',
+                            height: '100%',
+                            maxHeight: '200px',
+                            overflow: 'hidden'  
+                          }}>
+                          {media.map((img, i) => 
+                            {
+                              return (
+                                post.featured_media === img.id ? <img 
+                                  style={{
+                                    width: '100%',
+                                    display: 'block'
+                                  }}
+                                  key={i}
+                                  alt={post.featured_media === img.id ? img.slug.replace(/-/g, ' ') : null} 
+                                  src={post.featured_media === img.id ? img.source_url : null} />  
+                                : null
+                              )
+                            }
+                          )}
+                          </div>
+                        }
+                        key={ key }
+                        actions={[
+                          <Button onClick={() => this.getArticle(post.slug)} type={'primary'}>View</Button>
+                        ]}
+                        style={{ marginBottom: '20px' }}>
+                        { 
+                          Array.from(users).map((user, key) => {
+                            return post.author === user.id ? <Meta
+                              key={key}
+                              avatar={<Avatar src={ post.author === user.id ? user.avatar_urls[96] : null } />}
+                              title={post.title.rendered}
+                              description={ 'Published: ' + moment( post.date ).format( 'D/M/YYYY' )}
+                            /> : null
+                          }) 
+                        }
+                      </Card>
+                    )
+                  }) 
+                }
               </Col>
             </Row>
           </Content>

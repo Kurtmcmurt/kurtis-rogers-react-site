@@ -16,7 +16,7 @@ export default class App extends PureComponent {
   
   state = {
     pageTitle: null,
-    pageUrl: null
+    pageUrl: null,
   } 
 
   render() {
