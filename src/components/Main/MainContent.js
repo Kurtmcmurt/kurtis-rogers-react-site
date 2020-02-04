@@ -12,11 +12,26 @@ export default class MainContent extends PureComponent {
     return (
       <Fragment>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" exact component={About} />
-          <Route path="/blog" exact component={BlogCategories}/>
-          <Route path="/contact" exact component={Contact} />
-          <Route path={`/blog/:articleKey`} exact component={Post} />
+          <Route  
+            exact 
+            path="/" 
+            render={() => <Home {...this.props} />} />
+          <Route 
+            path="/about" 
+            exact 
+            render={() => <About {...this.props} />} />
+          <Route 
+            path="/blog" 
+            exact 
+            render={() => <BlogCategories {...this.props} />} />
+          <Route 
+            path="/contact" 
+            exact  
+            render={() => <Contact {...this.props} />} />
+          <Route 
+            path={`/blog/:articleKey`} 
+            exact 
+            component={Post} />
         </Switch>
       </Fragment>
     );

@@ -114,7 +114,7 @@ export default class About extends PureComponent {
         <Layout>
           <Content style={{ padding: '50px' }}>
             <Row gutter={16}>
-              <Col xs={24} md={18}>
+              <Col xs={24} md={18} style={{ marginBottom: '20px' }}>
                 <Card>
                   <Title style={{textDecoration: 'underline'}} level={2}>Web Developer based in Bristol</Title>
                   <p>

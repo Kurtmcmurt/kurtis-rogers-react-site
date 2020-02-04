@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
-import { Card, Row, Col, Layout, Icon, Typography, Divider } from 'antd';
+import { Card, Row, Col, Layout, Icon, Typography, Divider, notification, Button } from 'antd';
 import PageBanner from './../../components/Elements/PageBanner';
 import { purple, geekblue } from '@ant-design/colors';
 import Emoji from 'react-emoji-render';
@@ -13,22 +13,43 @@ export default class Home extends PureComponent {
   state = {
     height: ''
   };
-
+  
   componentDidMount() {
-    let headerHeight = document.querySelector('.ant-layout-header')
-      .clientHeight;
 
+    let headerHeight = document.querySelector('.ant-layout-header')
+    .clientHeight;
+    
     this.setState({
       height: headerHeight,
       page: {
         metadesc: 'Home',
         metaauthor: 'Kurtis Rogers',
         metaviewport: 'width=device-width, initial-scale=1.0'
-      }
+      },
+      posts: this.props
+    });
+    
+    this.handleLoadNotification();
+    
+  }
+
+  handleLoadNotification = () => {
+    const content = 
+    <div>
+      <p>Something special</p>
+      <Button>Something Special</Button>
+    </div>;
+
+    notification.open({
+      message: <p style={{ fontWeight: 'bold' }}>Latest Post</p>,
+      description: content,
+      icon: <Icon type="smile" style={{ color: '#108ee9' }} />,
+      placement: 'bottomLeft',
     });
   }
 
   render() {
+
     return (
       <Fragment>
         <Helmet>
