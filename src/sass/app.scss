@@ -1,0 +1,186 @@
+/* Main color list:
+purple: #1d39c4
+*/
+
+@import "functions";
+@import "values";
+@import "breakpoints";
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
+
+.logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 24px 16px 0;
+  float: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body,
+html,
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+}
+
+
+html {font-size: 100%;} /*16px*/
+
+body {
+  background-color: white;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #333;
+}
+
+p {margin-bottom: 1.15rem;}
+
+h1, h2, h3, h4, h5 {
+  margin: 2.75rem 0 1.05rem;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 3.052em;
+}
+
+h2 {font-size: 2.441em;}
+
+h3 {font-size: 1.953em;}
+
+h4 {font-size: 1.563em;}
+
+h5 {font-size: 1.25em;}
+
+small, .text_small {font-size: 0.8em;}
+
+.kr--drawer-body {
+  .ant-drawer-content {
+    background: #000000;
+  }
+}
+
+/** Main nav styles **/
+.kr--main-nav {
+  .ant-menu-item a.active {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .ant-menu-item {
+    padding: 0 !important;
+    margin: 0;
+    a {
+      padding: 0 20px;
+    }
+  }
+}
+
+.kr--drawer-body {
+  .kr--mobile-nav {
+    .ant-menu-item a.active {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .ant-menu-item {
+      padding: 0 !important;
+      margin: 0;
+      a {
+        padding: 0 20px;
+        background: #000000;
+      }
+    }
+
+    .ant-menu-item-selected {
+      background-color: #ffffff;
+      a {
+        color: #000000;
+      }
+    }
+  }
+
+  .ant-drawer-header {
+    background-color: #000000;
+    border: none;
+    .logo {
+      width: 100%;
+    }
+  }
+}
+
+.kr--full-width-height-banner {
+  height: 100vh;
+}
+
+.kkr--card-dark-bg-light-text {
+  color: #ffffff;
+}
+
+.kkr--footer-50-wth-alt-clrbg {
+  width: 100%;
+  min-height: 200px;
+}
+
+.kr--btn-style-wht-bg {
+  background: #ffffff;
+  color: #1d39c4;
+}
+
+@include media-breakpoint-down(md) {
+  .kkr--svg-container {
+    margin-bottom: 0.5em;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .kr--text-padding-bottom {
+    padding-bottom: 80px;
+  }
+
+  .ant-layout-footer {
+    .logo {
+      display: block;
+      width: 100%;
+      margin: 80px 50px;
+    }
+  }
+
+  .kr--main-nav {
+    display: none;
+  }
+
+}
+
+.kr--mobile-menu-button {
+  display: none;
+}
+
+@include media-breakpoint-down(sm) {
+  .kr--mobile-menu-button {
+    display: block;
+  }
+}
+
+.kkr-post-content-wrapper {
+  .wp-block-image {
+    img {
+      display: block;
+      height: auto;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+}
