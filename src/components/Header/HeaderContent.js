@@ -3,7 +3,7 @@ import HeaderContentNavi from "./HeaderContentNavi";
 import { Typography, Button, Drawer, Menu } from "antd";
 import { NavLink } from "react-router-dom";
 
-const { Paragraph, Title } = Typography;
+const { Paragraph } = Typography;
 
 export default class HeaderContent extends PureComponent {
   constructor() {
@@ -15,7 +15,6 @@ export default class HeaderContent extends PureComponent {
     };
 
   }
-
 
   showDrawer = () => {
     this.setState({
@@ -30,6 +29,9 @@ export default class HeaderContent extends PureComponent {
   };
 
   render() {
+
+    let pageColor = this.props.hcBgColor;
+
     return (
       <Fragment>
         <div className="logo">
@@ -40,7 +42,9 @@ export default class HeaderContent extends PureComponent {
             Kurtis Rogers
           </Paragraph>
         </div>
-        <HeaderContentNavi />
+        <HeaderContentNavi
+          activeColor={pageColor}
+        />
         <Button
           icon="menu"
           className="kr--mobile-menu-button"
@@ -74,22 +78,43 @@ export default class HeaderContent extends PureComponent {
             mode="inline"
           >
             <Menu.Item key="1">
-              <NavLink activeClassName={"active"} exact to="/">
+              <NavLink 
+                activeStyle={{
+                  background: pageColor,
+                }}
+                activeClassName={"active"} 
+                exact 
+                to="/">
                 Home
               </NavLink>
             </Menu.Item>
             <Menu.Item key="2">
-              <NavLink activeClassName={"active"} to="/about">
+              <NavLink 
+                activeStyle={{
+                  background: pageColor,
+                }}
+                activeClassName={"active"}  
+                to="/about">
                 About
               </NavLink>
             </Menu.Item>
             <Menu.Item key="3">
-              <NavLink activeClassName={"active"} to="/blog">
+              <NavLink 
+                activeStyle={{
+                  background: pageColor,
+                }}
+                activeClassName={"active"}  
+                to="/blog">
                 Blog
               </NavLink>
             </Menu.Item>
             <Menu.Item key="4">
-              <NavLink activeClassName={"active"} to="/contact">
+              <NavLink 
+                activeStyle={{
+                  background: pageColor,
+                }}
+                activeClassName={"active"}  
+                to="/contact">
                 Contact
               </NavLink>
             </Menu.Item>

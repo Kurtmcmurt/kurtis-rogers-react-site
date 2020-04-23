@@ -59,7 +59,13 @@ export default class PageBanner extends PureComponent {
         className="kr--full-width-height-banner"
       >
         <Layout className="layout" style={{ background: 'none' }}>
-          <Content style={{ padding: '0 50px' }}>
+          <Content 
+            style={{ 
+              padding: '0 20px', 
+              maxWidth: '1280px',
+              width: '100%', 
+              margin: 'auto' 
+            }}>
             <Row type="flex" gutter={32}>
               {direction === 'text-left' ? (
                 <Fragment>
@@ -160,21 +166,24 @@ export default class PageBanner extends PureComponent {
                           {buttontext} <Icon type={icontype} />
                         </Link>
                       )}
-                      {buttons && (
-                        buttons.map((button, i) => {
-                          return (
-                            <Button
-                              key={i} 
-                              style={(button.style)} 
-                              icon={button.icon} 
-                              target={button.target}
-                              href={`${button.link}`}>
-                              {button.title}
-                            </Button>
-                          )
-                        })
-                      )}
-                    </div>
+                        {buttons && (
+                          buttons.map((button, i) => {
+                            return (
+                              <Col key={i} span={12} xs={24} md={12}>
+                                <Button
+                                  key={i} 
+                                  className={button.class}
+                                  style={(button.style)} 
+                                  icon={button.icon} 
+                                  target={button.target}
+                                  href={`${button.link}`}>
+                                  {button.title}
+                                </Button>
+                              </Col>
+                            )
+                          })
+                        )}
+                      </div>
                   </Col>
                 </Fragment>
               )}

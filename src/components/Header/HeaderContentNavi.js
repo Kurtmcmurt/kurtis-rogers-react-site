@@ -4,25 +4,10 @@ import { NavLink } from 'react-router-dom';
 
 export default class HeaderContentNavi extends PureComponent {
   
-  state = {
-    homeColor: '',
-    aboutColor: '',
-    contactColor: ''
-  }
-
-  componentDidMount() {
-    this.setState({
-      homeColor: 'purple',
-      aboutColor: 'green',
-      contactColor: 'blue'      
-    }); 
-  }
-  
   render() {
 
-    let color = this.state.aboutColor;
-
-    console.log(color);
+    let activeColor = this.props.activeColor;
+    console.log('head navi: ', this.props)
 
     return (
       <Fragment>
@@ -34,18 +19,48 @@ export default class HeaderContentNavi extends PureComponent {
           style={{ lineHeight: '64px' }}
         >
           <Menu.Item key="1">
-            <NavLink exact to="/">
+            <NavLink
+              activeClassName={"active"}
+              activeStyle={{
+                background: activeColor,
+                color: '#ffffff'
+              }} 
+              exact to="/">
               Home
             </NavLink>
           </Menu.Item>
           <Menu.Item key="2">
-            <NavLink to="/about">About</NavLink>
+            <NavLink 
+              activeClassName={"active"}
+              activeStyle={{
+                background: activeColor,
+                color: '#ffffff'
+              }} 
+              to="/about">
+              About
+            </NavLink>
           </Menu.Item>
           <Menu.Item key="3">
-            <NavLink to="/blog">Blog</NavLink>
+            <NavLink 
+              activeClassName={"active"}
+              activeStyle={{
+                background: activeColor,
+                color: '#ffffff'
+              }} 
+              to="/blog">
+              Blog
+            </NavLink>
           </Menu.Item>
           <Menu.Item key="4">
-            <NavLink to="/contact">Contact</NavLink>
+            <NavLink 
+              activeClassName={"active"}
+              activeStyle={{
+                background: activeColor,
+                color: '#ffffff'
+              }} 
+              to="/contact">
+              Contact
+            </NavLink>
           </Menu.Item>
         </Menu>
       </Fragment>

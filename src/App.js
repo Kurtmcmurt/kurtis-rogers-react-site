@@ -8,7 +8,6 @@ import HeaderContent from "./components/Header/HeaderContent";
 import FooterContent from "./components/Footer/FooterContent";
 import MainContent from "./components/Main/MainContent";
 
-import Helmet from "react-helmet";
 import axios from "axios";
 
 const { Header, Footer } = Layout;
@@ -16,95 +15,66 @@ const apiUrl = 'https://news.kurtisrogers.com';
 const apiUrlObjs = {
   posts: `${apiUrl}/wp-json/wp/v2/posts`,
   media: `${apiUrl}/wp-json/wp/v2/media`,
-  users: `${apiUrl}/wp-json/wp/v2/users`
+  users: `${apiUrl}/wp-json/wp/v2/users`,
 }
 
 export default class App extends PureComponent {
   
   state = {
-    pageTitle: null,
-    pageUrl: null,
-    posts: [],
-    media: [],
-    users: []
+    templateAtts: [
+      {
+        path: '/',
+        colour: '#1890ff'
+      },
+      {
+        path: '/about',
+        colour: '#08979c'
+      },
+      {
+        path: '/blog',
+        colour: '#eb2f96'
+      },
+      {
+        path: '/contact',
+        colour: '#722ed1'
+      },
+      {
+        path: 'post',
+        colour: '#1890ff'
+      }
+    ]
   } 
 
-  componentDidMount() {
-    this.handleGetMedia();
-    this.handleGetUsers();
-    this.handleGetPosts();
-  }
+  async componentDidMount() {
+    
+    axios.all([
+      axios.get(apiUrlObjs.posts),    
+      axios.get(apiUrlObjs.media),
+      axios.get(apiUrlObjs.users)
+    ])
+    .then(axios.spread((posts, media, users) => {
+      let arr = [];
+      let postsData = posts.data;
+      let mediaData = media.data;
+      let usersData = users.data;
+      this.setState({
+        postData: arr.concat({"posts": postsData, "media": mediaData, "users": usersData} )
+      })
+    }))
+    .catch(error => console.log(error));
 
-  handleGetPosts = () => {
-    return axios
-      .get(apiUrlObjs.posts)
-      .then(response => {
-        this.setState({ posts: response.data })
-      })
-      .catch(err => {
-        console.log('err :', err);
-      })
-  }
-
-  handleGetMedia = () => {
-    return axios
-      .get(apiUrlObjs.media)
-      .then(response => {
-        this.setState({ media: response.data })
-      })
-      .catch(err => {
-        console.log('err :', err);
-      })
-  }
-
-  handleGetUsers = () => {
-    return axios
-      .get(apiUrlObjs.users)
-      .then(response => {
-        this.setState({ users: response.data })
-      })
-      .catch(err => {
-        console.log('err :', err);
-      })
   }
 
   render() {
+
     return (
-        <Router 
-          title={this.state.pageTitle}
-          url={this.state.pageUrl} 
-        >
+        <Router>
           <div className="App" style={{ overflow: "hidden" }}>
             <Layout style={{ minHeight: "100vh" }} className="layout">
-              <Helmet>
-                <meta charSet="utf-8" />
-                <title>{this.state.pageTitle}</title>
-                <link rel="canonical" href={`https://kurtisrogers/${this.state.pageUrl}`} />
-              </Helmet>
-              <Header
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  zIndex: 1
-                }}
-              >
-                <HeaderContent />
-              </Header>
               <MainContent
-                posts={this.state.posts}
-                media={this.state.media}
-                users={this.state.users}
+                postData={this.state.postData}
+                atts={this.state.templateAtts}
               />
-              <Footer
-                style={{
-                  backgroundColor: "#001529",
-                  width: "100%",
-                  padding: "0"
-                }}
-              >
-                <FooterContent />
-              </Footer>
             </Layout>
           </div>
         </Router>

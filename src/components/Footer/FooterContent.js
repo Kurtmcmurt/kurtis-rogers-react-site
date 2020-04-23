@@ -5,13 +5,19 @@ import { geekblue } from "@ant-design/colors";
 const { Paragraph } = Typography;
 
 export default class FooterContent extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.setState({
+      pageAtts: this.props.atts
+    })
+  }
+
   render() {
-    // let icons = [
-    //   { name: "facebook", link: "google.com" },
-    //   { name: "twitter", link: "google.com" },
-    //   { name: "linkedin", link: "google.com" },
-    //   { name: "instagram", link: "google.com" }
-    // ];
+
+    let pageColor = this.props.fcBgColor;
 
     return (
       <Fragment>
@@ -34,7 +40,7 @@ export default class FooterContent extends PureComponent {
             xs={24}
             md={12}
             style={{
-              backgroundColor: `${geekblue.primary}`,
+              backgroundColor: pageColor,
               overflow: "hidden",
               padding: '80px 50px'
             }}
@@ -50,35 +56,6 @@ export default class FooterContent extends PureComponent {
             >
               Thanks for visiting.
             </Paragraph>
-            {/* <div style={{ display: "block" }}>
-              <ul
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  paddingLeft: "0"
-                }}
-              >
-                {icons.map((icon, i) => (
-                  <li
-                    key={i}
-                    style={{ listStyleType: "none", marginRight: "1em" }}
-                  >
-                    <a style={{ display: "block" }} href={icon.link}>
-                      <Icon
-                        style={{
-                          color: "#ffffff",
-                          fontSize: "3em"
-                        }}
-                        type={icon.name}
-                      />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div> */}
-            {/* <Fragment>
-              <div className="kkr--footer-nav-parent" />
-            </Fragment> */}
           </Col>
         </Row>
       </Fragment>
