@@ -1,29 +1,43 @@
 import React, { Component, Fragment } from 'react'
 import axios from 'axios'
-import { PageHeader, Layout, Typography, Row, Col, Skeleton, Tag, Icon } from 'antd';
+import { PageHeader, Layout, Typography, Row, Col, Skeleton, Tag } from 'antd';
 import { withRouter } from "react-router-dom";
 
 import Helmet from 'react-helmet';
+import HeaderContent from '../../components/Header/HeaderContent';
+import FooterContent from '../../components/Footer/FooterContent';
 
-const { Content } = Layout;
-const { Title, Text } = Typography;
+const { Content, Header, Footer } = Layout;
+const { Title } = Typography;
 
 class Post extends Component {
-
-  state = {
-    post: {
-      title: {
-        rendered: ''
+  constructor(props){
+    super(props);
+    this.state = {
+      height: '',
+      content: this.props.content,
+      post: {
+        title: {
+          rendered: ''
+        },
+        content: {
+          rendered: ''
+        }
       },
-      content: {
-        rendered: ''
-      }
-    },
-    blogPostImage: [],
-    loading: true
+      blogPostImage: [],
+      loading: true
+    };
   }
   
   componentDidMount() {
+
+    let headerHeight = document.querySelector('.ant-layout-header')
+      .clientHeight;
+
+    this.setState({
+      height: headerHeight,
+    });
+
     this.getPostData();
     this.getPostImage();
   }
@@ -67,19 +81,42 @@ class Post extends Component {
 
   render() {
     
+    const { content } = this.state;
+
+    let pageColor;
+    let path = this.props.location.pathname;
+
+    (content.atts || []).map((page) => {
+      return page.path === 'post' ? 
+        pageColor = page.colour
+      : null
+    })
+
     const { post, loading, blogPostImage } = this.state;
 
     console.log(post);
     
     return (
       <Fragment>
+        <Header
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            zIndex: 1
+          }}
+        >
+          <HeaderContent 
+            hcBgColor={pageColor}
+            atts={this.state.templateAtts} />
+        </Header>
         <Helmet>
           {/* <!-- Open Graph data --> */}
           <meta property="og:title" content={ post ? `${post.title.rendered}` : null } />
           <meta property="og:type" content="article" />
           <meta property="og:url" content={ post ? `https://kurtisrogers.com/${post.slug}` : null } />
           
-          <meta property="og:description" content={ post ? `${post.content.rendered.replace(/(<([^>]+)>)/ig, "")}` : null } />
+          <meta property="og:description" content={`${post.content.rendered.replace(/(<([^>]+)>)/ig, "")}`} />
           <meta property="og:site_name" content="Kurtis Rogers" /> 
           <meta property="fb:app_id" content="474985726777050" />
           {/* <!-- Twitter Card data --> */}
@@ -89,8 +126,8 @@ class Post extends Component {
           <meta name="twitter:description" content={ post ? `${post.content.rendered.replace(/(<([^>]+)>)/ig, "")}` : null } />
         </Helmet>
         <Layout className="layout">
-          <Content style={{ padding: '50px' }}>
-          <PageHeader
+          <Content style={{ padding: '50px 20px' }}>
+          {/* <PageHeader
             style={{
               border: '1px solid rgb(235, 237, 240)',
             }}
@@ -99,13 +136,13 @@ class Post extends Component {
             subTitle={post ? post.title.rendered : null }
           >
             <Content>
-              Some content for the page header sextion
+              Hope you enjoy the content!
             </Content>
-          </PageHeader>
+          </PageHeader> */}
           <Row style={{
             textAlign: "center"
           }} type="flex" justify="center" align="middle">
-            <Col span={12}>
+            <Col md={12} xs={24}>
               <Skeleton loading={loading} active>
                 <Title style={{
                   margin: "50px 0"
@@ -122,7 +159,7 @@ class Post extends Component {
                 {blogPostImage.map((image, key) => {
                     console.log(image.id)
                     return (
-                      <Fragment>
+                      <Fragment key={key}>
                         {/* <!-- Twitter Summary card images must be at least 120x120px --> */}
                         { image.id === post.featured_media ?
                           <Fragment>
@@ -153,12 +190,22 @@ class Post extends Component {
             <Col xs={{ span: 24 }} md={{ span: 16 }}>
               <Skeleton loading={loading} active>
                 {post ? <div className="kkr-post-content-wrapper" dangerouslySetInnerHTML={(this.handleContent(post.content.rendered))}></div> : null }
-
               </Skeleton>
             </Col>
           </Row>
           </Content>
         </Layout>
+        <Footer
+          style={{
+            backgroundColor: "#001529",
+            width: "100%",
+            padding: "0"
+          }}
+          >
+          <FooterContent 
+            fcBgColor={pageColor}
+            atts={this.state.templateAtts} />
+        </Footer>
       </Fragment>
     )
   }

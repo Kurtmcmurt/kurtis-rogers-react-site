@@ -7,31 +7,61 @@ import Post from "../../containers/Post/Post";
 import BlogCategories from "../../containers/Blog/BlogCategories";
 
 export default class MainContent extends PureComponent {
-  
+
+  state = {
+    templateAtts: [
+      {
+        name: 'home',
+        colour: '#1890ff'
+      },
+      {
+        name: 'about',
+        colour: '#13c2c2'
+      },
+      {
+        name: 'blog',
+        colour: '#eb2f96'
+      },
+      {
+        name: 'contact',
+        colour: '#722ed1'
+      },
+      {
+        name: 'post',
+        colour: '#1890ff'
+      }
+    ]
+  } 
+
   render() {
+
+    const parentProps = this.props;
+    console.log('main content: ', parentProps);
+    console.log('main content state: ', this.state)
+
     return (
       <Fragment>
         <Switch>
-          <Route  
+          <Route 
             exact 
             path="/" 
-            render={() => <Home {...this.props} />} />
+            render={(props) => <Home content={parentProps} {...props} />} />
           <Route 
             path="/about" 
             exact 
-            render={() => <About {...this.props} />} />
+            render={(props) => <About content={parentProps} {...props} />} />
           <Route 
             path="/blog" 
             exact 
-            render={() => <BlogCategories {...this.props} />} />
+            render={(props) => <BlogCategories content={parentProps} {...props} />} />
           <Route 
             path="/contact" 
             exact  
-            render={() => <Contact {...this.props} />} />
+            render={(props) => <Contact content={parentProps} {...props} />} />
           <Route 
-            path={`/blog/:articleKey`} 
+            path={`/post/:articleKey`} 
             exact 
-            component={Post} />
+            render={(props) => <Post content={parentProps} {...props} />} />
         </Switch>
       </Fragment>
     );

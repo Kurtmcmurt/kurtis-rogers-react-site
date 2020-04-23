@@ -194,31 +194,31 @@
      id="arrowleft"
      points="535.27,527.21 480.786,472.725 535.72,417.79 519.06,401.13 447.014,472.275 519.06,543.42 "
      transform="matrix(1.5041769,0,0,1.4580781,-294.89121,-235.59979)"
-     style="fill:#6c63ff" />
+     style="fill:#1890ff" />
   <polygon
      id="arrowright"
      points="609.117,527.21 663.602,472.725 608.667,417.79 625.327,401.13 697.373,472.275 625.327,543.42 "
      transform="matrix(1.5041769,0,0,1.4580781,-294.89121,-235.59979)"
-     style="fill:#6c63ff" />
+     style="fill:#1890ff" />
   <ellipse
      cx="30.302139"
      cy="22.480043"
      id="circle31"
      rx="13.537593"
      ry="13.122704"
-     style="fill:#6c63ff;stroke-width:1.48094821" />
+     style="fill:#1890ff;stroke-width:1.48094821" />
   <ellipse
      cx="66.402382"
      cy="22.480043"
      id="circle33"
      rx="13.537593"
      ry="13.122704"
-     style="fill:#6c63ff;stroke-width:1.48094821" />
+     style="fill:#1890ff;stroke-width:1.48094821" />
   <ellipse
      cx="102.50263"
      cy="22.480043"
      id="circle35"
      rx="13.537593"
      ry="13.122704"
-     style="fill:#6c63ff;stroke-width:1.48094821" />
+     style="fill:#1890ff;stroke-width:1.48094821" />
 </svg>

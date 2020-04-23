@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react'
 import axios from 'axios'
-import { Button } from 'antd';
+// import { Button } from 'antd';
 import Blog from './Blog';
 
 import Helmet from 'react-helmet';
@@ -34,14 +34,19 @@ class BlogCategories extends PureComponent {
 
   render() {
 
-    const { cats, catPosts } = this.state;
+    const { cats } = this.state;
+
+    console.log('blogcategories template: ', this.props);
 
     return (
       <Fragment>
         <Helmet>
           <title>Blog | Bristol Web Developer | kurtisrogers.com</title>
         </Helmet>
-        <Blog history={this.props.history} catButtons={cats} />
+        <Blog 
+          content={this.props.content} 
+          location={this.props.location} 
+          history={this.props.history} catButtons={cats} />
       </Fragment>
     )
   }

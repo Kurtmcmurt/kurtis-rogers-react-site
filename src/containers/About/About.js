@@ -5,10 +5,13 @@ import { grey } from '@ant-design/colors';
 import Helmet from 'react-helmet';
 import axios from 'axios';
 import moment from 'moment';
+import HeaderContent from '../../components/Header/HeaderContent';
+import FooterContent from '../../components/Footer/FooterContent';
 
 const { Meta } = Card;
-const { Content } = Layout;
+const { Header, Footer, Content } = Layout;
 const { Title } = Typography;
+
 
 const apiUrl = 'https://news.kurtisrogers.com';
 const apiUrlObjs = {
@@ -18,12 +21,13 @@ const apiUrlObjs = {
 }
 
 export default class About extends PureComponent {
-  state = {
-    height: '',
-    posts: [],
-    media: [],
-    users: []
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      height: '',
+      content: [],
+    };
+  }
 
   componentDidMount() {
     let headerHeight = document.querySelector('.ant-layout-header')
@@ -33,53 +37,21 @@ export default class About extends PureComponent {
       height: headerHeight,
     });
 
-    this.handleGetPosts();
-    this.handleGetMedia();
-    this.handleGetUsers();
   }
 
-  handleGetPosts = () => {
-    axios
-      .get(apiUrlObjs.posts)
-      .then(response => {
-        // console.log('posts: ', response.data);
-        const posts = response.data;
-        this.setState({ posts });
-      })
-      .catch(err => {
-        console.log('error: ', err);
-      })
-  }
+  componentDidUpdate() {
 
-  handleGetMedia = () => {
-    axios
-      .get(apiUrlObjs.media)
-      .then(response => {
-        // console.log('posts: ', response.data);
-        const media = response.data;
-        this.setState({ media });
-      })
-      .catch(err => {
-        console.log('error: ', err);
-      })
+    // const postTitle;
+    this.loadDataAndSetState();
   }
-
-  handleGetUsers = () => {
-    axios
-      .get(apiUrlObjs.users)
-      .then(response => {
-        // console.log('posts: ', response.data);
-        const users = response.data;
-        this.setState({ users }); 
-      })
-      .catch(err => {
-        console.log('error: ', err);
-      })
+  
+  loadDataAndSetState = () => {
+    this.setState({ content: this.props.content })
   }
 
   getArticle( articleKey ) {
     const location = {
-      pathname: `/blog/${articleKey}`
+      pathname: `/post/${articleKey}`
     }
 
     return this.props.history.push(`${location.pathname}`);
@@ -87,24 +59,55 @@ export default class About extends PureComponent {
 
   render() {
 
-    const { posts, media, users } = this.state;
+    const { content } = this.state;
+    let posts;
+    let media;
+    let users;
+    // const media = content.postdata[0].media;
+    // const users = content.postdata[0].users;
 
-    console.log(this.props.blogdata);
+    let pageColor;
+    let path = this.props.location.pathname;
 
-    console.log('this.props', this.props);
-    console.log('this.state', this.state);
+    (content.atts || []).map((page) => {
+      return page.path === path ? 
+        pageColor = page.colour
+      : null
+    })
+
+    console.log('about.props: ', this.props);
+    // console.log('about.state: ', content['postData']);
+    const mapData = content['postData'];
+    (mapData || []).map(types => {
+      posts = types.posts;
+      media = types.media;
+      users = types.users;
+    })
 
     return (
       <Fragment>
+        <Header
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            zIndex: 1
+          }}
+        >
+          <HeaderContent 
+            hcBgColor={pageColor}
+            atts={this.state.templateAtts} />
+        </Header>
         <Helmet>
           <title>About | Bristol Web Developer | kurtisrogers.com</title>
         </Helmet>
         <PageBanner
           bgcolor={grey[6]}
-          imgsrc={require('../../assets/svg/steel-beams.svg')}
+          imgsrc={require('../../assets/svg/bathroom-floor.svg')}
           minusmarginTop={this.state.height}
           // maintain vertical alignment of all content
           paddingtopcontent={this.state.height}
+          bgcolor={pageColor}
           title="A page about me..."
           subtitle="I love tech, I enjoy the finer things in life like Linux and symlinks."
           bannercontent="And occassionally playing videogames on either my PlayStation or Nintendo Switch."
@@ -112,15 +115,21 @@ export default class About extends PureComponent {
         />
         {/* <InfoBanner /> */}
         <Layout>
-          <Content style={{ padding: '50px' }}>
+          <Content 
+            style={{ 
+              padding: '50px 20px',
+              maxWidth: '1280px',
+              width: '100%',
+              margin: 'auto' 
+            }}>
             <Row gutter={16}>
               <Col xs={24} md={18} style={{ marginBottom: '20px' }}>
                 <Card>
                   <Title style={{textDecoration: 'underline'}} level={2}>Web Developer based in Bristol</Title>
                   <p>
-                    My career in software development has spanned more than 5 years and in that time I&apos;ve worked in numerous environments with some great teams. I've worked extensively with WordPress, able to build custom themes and plugins, follow best-practices and have healthy knowledge of the global functions. I'm also a strong Front End developer, I've got strong skills with ES5 and ESnext JavaScript and can build applications with React. This site uses the WordPress API but I'm able to build my own API with other systems too. WordPress just makes it easy.  
+                    My career in software development has spanned more than 5 years and in that time I&apos;ve worked in numerous environments with some great teams. I've worked extensively with WordPress, able to build custom themes and plugins, follow best-practices and have healthy knowledge of the global functions. I'm also a strong Front End developer, I've got strong skills with ES5 and ESnext JavaScript and can build applications with React, recently delving into the world of Vue.js. This site uses the WordPress API but I'm able to build my own API with other systems too. WordPress just makes it easy and you can extend it to crazy levels.  
                   </p>
-                  <p>I'm not designer but I can appreciate great UX design and have worked with some talented interface designers in the past. The discussions based on design and user journey are imperative to the goal of the clients success and the very reason for them having a new build. It's such an important step and can determine the lifespan of the product, if the design becomes dated and people aren't able to use it, why start building?</p>
+                  <p>I'm not a designer but I can appreciate great UX design and have worked with some talented interface designers in the past. The discussions based on design and user journey are imperative to the goal of the clients success and the very reason for them having any work on their digital portfolio. It's such an important step and can determine the lifespan of the product, if the design becomes dated after a year and people aren't able to use it, what was the point?</p>
                   <p>I believe process and inclusion are key, everyone needs to be heard. We don't always have the best ideas and its important to listen to your workmates of all levels and disciplines. Trying different things is what makes life so enjoyable.</p>
                   <p>The experience I've gained so far:</p>
                   <Timeline>
@@ -135,17 +144,15 @@ export default class About extends PureComponent {
                       <p>Pretty Good Digital - 2016 <Icon type="code" /></p>
                       <p>Eldon Insurance - 2016/2018 <Icon type="code" /></p>
                       <p>Vvast - 2018 <Icon type="code" /></p>
-                      <p>Bigg - 2019/2020(/now) <Icon type="code" /></p>
+                      <p>Bigg - 2019/2020 <Icon type="code" /></p>
+                      <p><strong><a style={{ background: "linear-gradient(45deg,#8b0067 0%,#ca0767 45%,#f50663 70%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }} target="_blank" href="https://www.nomensa.com/">Nomensa</a></strong> - Present <Icon type="code" /></p>
                     </Timeline.Item>
                   </Timeline>
-                  <p>
-                    When I&apos;m not working, I give the Cat a smooth, go to the pub, go for walks and admire the natural beauty of the South West&apos;s Countryside. 
-                  </p>
                 </Card>
               </Col>
               <Col xs={24} md={6}>
                 { 
-                  posts.map((post, key) => {
+                  Array.from(posts || []).map((post, key) => {
                     return (
                       <Card 
                         cover={
@@ -156,7 +163,7 @@ export default class About extends PureComponent {
                             maxHeight: '200px',
                             overflow: 'hidden'  
                           }}>
-                          {media.map((img, i) => 
+                          {Array.from(media || []).map((img, i) => 
                             {
                               return (
                                 post.featured_media === img.id ? <img 
@@ -175,7 +182,12 @@ export default class About extends PureComponent {
                         }
                         key={ key }
                         actions={[
-                          <Button onClick={() => this.getArticle(post.slug)} type={'primary'}>View</Button>
+                          <Button
+                            style={{
+                              background: pageColor,
+                              border: "none"
+                            }}
+                            onClick={() => this.getArticle(post.slug)} type={'primary'}>Show me the post</Button>
                         ]}
                         style={{ marginBottom: '20px' }}>
                         { 
@@ -196,6 +208,17 @@ export default class About extends PureComponent {
             </Row>
           </Content>
         </Layout>
+        <Footer
+          style={{
+            backgroundColor: "#001529",
+            width: "100%",
+            padding: "0"
+          }}
+          >
+          <FooterContent 
+            fcBgColor={pageColor}
+            atts={this.state.templateAtts} />
+        </Footer>
       </Fragment>
     );
   }
